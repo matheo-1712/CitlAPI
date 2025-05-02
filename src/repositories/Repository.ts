@@ -1,5 +1,13 @@
 import { RowDataPacket } from "mysql2";
 import db from "../db";
+import { GenshinCharacterModel } from "../models/GenshinCharacterModel";
+import { it } from "node:test";
+
+/**
+ * Repository class
+ * @classdesc This class represents a repository with all the logic for the database.
+ * @template T - The type of the model.
+ */
 
 export abstract class Repository<T extends { id?: number }> {
 
@@ -32,6 +40,10 @@ export abstract class Repository<T extends { id?: number }> {
     public async save(item: T): Promise<void> {
         // Logique de vérification de l'existence de l'ID
         item.id ??= await this.getNextId();
+        // Logique de vérification de la disponibilité de l'ID
+        if (await this.findById(item.id)) {
+            item.id = await this.getNextId();
+        }
         this.store.set(item.id.toString(), item);
         // Logique de sauvegarde dans la base de données
         try {
@@ -79,6 +91,17 @@ export abstract class Repository<T extends { id?: number }> {
         }
     }
 
+    // Logique de mise à jour
+    async update(id: number, item: Partial<T>): Promise<T | null> {
+        try {
+            const [rows] = await db.query<RowDataPacket[]>(`UPDATE ${this.tableName} SET ? WHERE id = ?`, [item, id]);
+            return rows.length > 0 ? rows[0] as T : null;
+        } catch (error) {
+            console.error("Erreur lors de la mise à jour :", error);
+            return null;
+        }
+    }
+
     // Logique de query
     async query(query: string, params: any[] = []): Promise<T[]> {
         try {
@@ -100,4 +123,22 @@ export abstract class Repository<T extends { id?: number }> {
             return null;
         }
     }
+
+    // Logique de remplissage de la table
+    async fillTable(): Promise<void> {
+        try {
+            const data = require("../../data/genshin_characters.json");
+            for (const character of data) {
+                // Vérifie si un personnage avec le même nom existe déjà
+                const existingCharacter = await GenshinCharacterModel.getByCharacterName(character.name);
+                if (!existingCharacter) {
+                    // Enregistrer l'objet
+                    await this.save(character as T);
+                }
+            }
+        } catch (error) {
+            console.error("Erreur lors du remplissage de la table :", error);
+        }
+    }
+
 }

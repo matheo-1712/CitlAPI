@@ -1,9 +1,14 @@
 // src/models/Model.ts
 
+/**
+ * Model class
+ * @classdesc This class represents a model with all the logic for the model.
+ **/
+
 export class Model {
 
     // Propriété id de type number
-    id: number;
+    id?: number;
     static readonly models: any;
 
     // Constructeur de la classe Model

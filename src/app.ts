@@ -2,6 +2,8 @@ import express, { Application } from "express"
 import * as dotevnv from "dotenv"
 import cors from "cors"
 import helmet from "helmet"
+import { GenshinCharacterModel } from "./models/GenshinCharacterModel"
+import { GenshinRoute } from "./routes/GenshinRoute"
 
 dotevnv.config()
 
@@ -9,6 +11,8 @@ class App {
     public app: Application
     private readonly port: number
 
+    public readonly modelsGenshinCharacter = new GenshinCharacterModel({});
+    
     constructor() {
         this.app = express();
         this.port = Number(process.env.PORT) || 3000;
@@ -25,6 +29,7 @@ class App {
         this.app.get("/", (req, res) => {
             res.send("Hello World!")
         })
+        this.app.use("/api/genshin", new GenshinRoute().router)
     }
 
     public start() {
@@ -43,6 +48,9 @@ async function start() {
 
     // Lancement de l'application
     app.start()
+
+    // Remplissage de la table des genshin characters
+    await app.modelsGenshinCharacter.fillTable();
 }
 
 start().catch((error) => {
