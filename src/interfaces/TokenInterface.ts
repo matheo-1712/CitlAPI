@@ -1,4 +1,3 @@
-
 // src/interfaces/TokenInterface.ts
 
 /**

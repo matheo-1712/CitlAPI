@@ -91,17 +91,20 @@ export class GenshinCharacterController extends Controller {
     }
 
     // DELETE /characters/:id : Supprimer un personnage
-    async delete(req: Request, res: Response): Promise<void> {
+    async delete(req: Request, res: Response): Promise<boolean> {
         const { id } = req.params;
         try {
             const success = await this.model.delete(Number(id));
             if (success) {
                 super.sendSuccess(res, `Personnage avec l'ID ${id} supprimé.`);
+                return true;
             } else {
                 super.sendNotFound(res, `Personnage avec l'ID ${id} introuvable.`);
+                return false;
             }
         } catch (error) {
             super.sendError(res, error instanceof Error ? error.message : String(error));
+            return false;
         }
         
     }

@@ -8,6 +8,17 @@ import { TokenModel } from "./models/TokenModel"
 
 dotevnv.config()
 
+/**
+ * App class
+ * @classdesc This class represents the application.
+ * @extends express.Application
+ * @implements {TokenModel}
+ * @implements {GenshinCharacterModel}
+ * @implements {GenshinRoute}
+ */
+
+
+
 class App {
     public app: Application
     private readonly port: number

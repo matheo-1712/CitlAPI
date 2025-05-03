@@ -2,6 +2,12 @@ import { NextFunction, Request, Response } from "express";
 import { Middleware } from "./Middleware";
 import { ServiceToken } from "../services/TokenService";
 
+/**
+ * MiddlewareAuth class
+ * @classdesc This class represents a middleware for authentication.
+ * @extends Middleware
+ **/
+
 export class MiddlewareAuth extends Middleware {
     handle(req: Request, res: Response, next: NextFunction): void {
         (async () => {
