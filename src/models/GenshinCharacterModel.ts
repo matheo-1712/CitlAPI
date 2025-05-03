@@ -12,7 +12,6 @@ import { Model } from "./Model";
  */
 
 export class GenshinCharacterModel extends Model implements GenshinCharacterInterface, ModelInterface<GenshinCharacterModel> {
-    private static readonly S_repository = new GenshinCharacterRepository();
     private readonly repository = new GenshinCharacterRepository();
     name: string;
     element: string;
@@ -34,32 +33,34 @@ export class GenshinCharacterModel extends Model implements GenshinCharacterInte
         this.ascensionStat = data.ascensionStat ?? undefined;
         this.formatedValue = data.formatedValue ?? "";
     }
+    
+    // Méthode pour obtenir l' ensemble des personnages
     async getAll(): Promise<GenshinCharacterModel[]> {
         return await this.repository.findAll();
     }
-    getById(id: number): Promise<GenshinCharacterModel | null> {
-        throw new Error("Method not implemented.");
-    }
-    create(data: Partial<GenshinCharacterModel>): Promise<GenshinCharacterModel> {
-        throw new Error("Method not implemented.");
-    }
-    update(id: number, data: Partial<GenshinCharacterModel>): Promise<GenshinCharacterModel | null> {
-        throw new Error("Method not implemented.");
-    }
-    delete(id: number): Promise<boolean> {
-        throw new Error("Method not implemented.");
+
+    // Méthode pour obtenir le personnage par son ID
+    async getById(id: number): Promise<GenshinCharacterModel | null> {
+        return await this.repository.findById(id);
     }
 
-    // Méthode pour récupérer tous les personnages
-    static async getAll(): Promise<GenshinCharacterModel[]> {
-        const characters = await this.S_repository.findAll();
-        return characters;
+    // Méthode créer un personnage
+    async create(data: Partial<GenshinCharacterModel>): Promise<GenshinCharacterModel> {
+        const character = new GenshinCharacterModel(data);
+        await this.repository.save(character);
+        return new GenshinCharacterModel(data);
     }
 
-    // Méthode pour récupérer un personnage par son nom
-    static async getByCharacterName(name: string): Promise<GenshinCharacterModel | null> {
-        const character = await this.S_repository.getByCharacterName(name);
-        return character;
+    // Méthode pour mettre à jour un personnage
+    async update(id: number, data: Partial<GenshinCharacterModel>): Promise<GenshinCharacterModel | null> {
+        const character = new GenshinCharacterModel(data);
+        character.id = id;
+        return await this.repository.update(id, character);
+    }
+
+    // Méthode pour supprimer un personnage
+    async delete(id: number): Promise<boolean> {
+        return await this.repository.delete(id);
     }
 
     // Méthode pour remplir la table avec des données JSON

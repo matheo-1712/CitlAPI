@@ -1,13 +1,11 @@
 import { RowDataPacket } from "mysql2";
 import db from "../db";
-import { GenshinCharacterModel } from "../models/GenshinCharacterModel";
-import { it } from "node:test";
 
 /**
  * Repository class
  * @classdesc This class represents a repository with all the logic for the database.
  * @template T - The type of the model.
- */
+ **/
 
 export abstract class Repository<T extends { id?: number }> {
 
@@ -55,7 +53,7 @@ export abstract class Repository<T extends { id?: number }> {
     }
 
     // Logique de recherche
-    public async findById(id: number): Promise<T | null> {
+    async findById(id: number): Promise<T | null> {
         try {
             // Effectuer la requête avec un typage spécifique pour MySQL
             const [rows] = await db.query<RowDataPacket[]>(`SELECT * FROM ${this.tableName} WHERE id = ?`, [id]);
@@ -123,22 +121,4 @@ export abstract class Repository<T extends { id?: number }> {
             return null;
         }
     }
-
-    // Logique de remplissage de la table
-    async fillTable(): Promise<void> {
-        try {
-            const data = require("../../data/genshin_characters.json");
-            for (const character of data) {
-                // Vérifie si un personnage avec le même nom existe déjà
-                const existingCharacter = await GenshinCharacterModel.getByCharacterName(character.name);
-                if (!existingCharacter) {
-                    // Enregistrer l'objet
-                    await this.save(character as T);
-                }
-            }
-        } catch (error) {
-            console.error("Erreur lors du remplissage de la table :", error);
-        }
-    }
-
 }

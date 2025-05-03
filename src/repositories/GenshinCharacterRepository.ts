@@ -19,7 +19,7 @@ import { Repository } from "./Repository";
     ascensionStat TEXT, -- Champ optionnel
     formatedValue VARCHAR(100) NOT NULL
 );
- */
+ **/
 
 export class GenshinCharacterRepository extends Repository<GenshinCharacterModel> {
     constructor() {
