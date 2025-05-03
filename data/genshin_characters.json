@@ -1,0 +1,582 @@
+[
+    {
+        "name": "Albedo",
+        "element": "Geo",
+        "weapon": "Sword",
+        "region": "Mondstadt",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Albedo.png",
+        "ascensionStat": "",
+        "formatedValue": "albedo"
+    },
+    {
+        "name": "Alhaitham",
+        "element": "Dendro",
+        "weapon": "Sword",
+        "region": "Sumeru",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Alhaitham.png",
+        "ascensionStat": "",
+        "formatedValue": "alhaitham"
+    },
+    {
+        "name": "Aloy",
+        "element": "Cryo",
+        "weapon": "Bow",
+        "region": "Mondstadt",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Aloy.png",
+        "ascensionStat": "",
+        "formatedValue": "aloy"
+    },
+    {
+        "name": "Amber",
+        "element": "Pyro",
+        "weapon": "Bow",
+        "region": "Mondstadt",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Amber.png",
+        "ascensionStat": "",
+        "formatedValue": "amber"
+    },
+    {
+        "name": "Itto",
+        "element": "Geo",
+        "weapon": "Claymore",
+        "region": "Inazuma",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Itto.png",
+        "ascensionStat": "",
+        "formatedValue": "itto"
+    },
+    {
+        "name": "Arlecchino",
+        "element": "Pyro",
+        "weapon": "Polearm",
+        "region": "Fontaine",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Arlecchino.png",
+        "ascensionStat": "",
+        "formatedValue": "arlecchino"
+    },
+    {
+        "name": "Ayaka",
+        "element": "Cryo",
+        "weapon": "Sword",
+        "region": "Inazuma",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Ayaka.png",
+        "ascensionStat": "",
+        "formatedValue": "ayaka"
+    },
+    {
+        "name": "Ayato",
+        "element": "Hydro",
+        "weapon": "Sword",
+        "region": "Inazuma",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Ayato.png",
+        "ascensionStat": "",
+        "formatedValue": "ayato"
+    },
+    {
+        "name": "Baizhu",
+        "element": "Dendro",
+        "weapon": "Catalyst",
+        "region": "Liyue",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Baizhu.png",
+        "ascensionStat": "",
+        "formatedValue": "baizhu"
+    },
+    {
+        "name": "Barbara",
+        "element": "Hydro",
+        "weapon": "Catalyst",
+        "region": "Mondstadt",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Barbara.png",
+        "ascensionStat": "",
+        "formatedValue": "barbara"
+    },
+    {
+        "name": "Beidou",
+        "element": "Electro",
+        "weapon": "Claymore",
+        "region": "Liyue",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Beidou.png",
+        "ascensionStat": "",
+        "formatedValue": "beidou"
+    },
+    {
+        "name": "Bennett",
+        "element": "Pyro",
+        "weapon": "Sword",
+        "region": "Mondstat",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Bennett.png",
+        "ascensionStat": "",
+        "formatedValue": "bennett"
+    },
+    {
+        "name": "Candace",
+        "element": "Hydro",
+        "weapon": "Polearm",
+        "region": "Sumeru",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Candace.png",
+        "ascensionStat": "",
+        "formatedValue": "candace"
+    },
+    {
+        "name": "Charlotte",
+        "element": "Cryo",
+        "weapon": "Catalyst",
+        "region": "Fontaine",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Charlotte.png",
+        "ascensionStat": "",
+        "formatedValue": "charlotte"
+    },
+    {
+        "name": "Chevreuse",
+        "element": "Pyro",
+        "weapon": "Polearm",
+        "region": "Fontaine",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Chevreuse.png",
+        "ascensionStat": "",
+        "formatedValue": "chevreuse"
+    },
+    {
+        "name": "Chongyun",
+        "element": "Cryo",
+        "weapon": "Claymore",
+        "region": "Liyue",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Chongyun.png",
+        "ascensionStat": "",
+        "formatedValue": "chongyun"
+    },
+    {
+        "name": "Citlali",
+        "element": "Cryo",
+        "weapon": "Catalyst",
+        "region": "Natlan",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Citlali.png",
+        "ascensionStat": "",
+        "formatedValue": "citlali"
+    },
+    {
+        "name": "Collei",
+        "element": "Dendro",
+        "weapon": "Bow",
+        "region": "Sumeru",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Collei.png",
+        "ascensionStat": "",
+        "formatedValue": "collei"
+    },
+    {
+        "name": "Cyno",
+        "element": "Electro",
+        "weapon": "Polearm",
+        "region": "Sumeru",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Cyno.png",
+        "ascensionStat": "",
+        "formatedValue": "cyno"
+    },
+    {
+        "name": "Dehya",
+        "element": "Pyro",
+        "weapon": "Claymore",
+        "region": "Sumeru",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Dehya.png",
+        "ascensionStat": "",
+        "formatedValue": "dehya"
+    },
+    {
+        "name": "Diluc",
+        "element": "Pyro",
+        "weapon": "Claymore",
+        "region": "Mondstat",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Diluc.png",
+        "ascensionStat": "",
+        "formatedValue": "diluc"
+    },
+    {
+        "name": "Diona",
+        "element": "Cryo",
+        "weapon": "Bow",
+        "region": "Mondstat",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Diona.png",
+        "ascensionStat": "",
+        "formatedValue": "diona"
+    },
+    {
+        "name": "Dori",
+        "element": "Electro",
+        "weapon": "Claymore",
+        "region": "Sumeru",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Dori.png",
+        "ascensionStat": "",
+        "formatedValue": "dori"
+    },
+    {
+        "name": "Eula",
+        "element": "Cryo",
+        "weapon": "Claymore",
+        "region": "Mondstat",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Eula.png",
+        "ascensionStat": "",
+        "formatedValue": "eula"
+    },
+    {
+        "name": "Faruzan",
+        "element": "Anemo",
+        "weapon": "Bow",
+        "region": "Sumeru",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Faruzan.png",
+        "ascensionStat": "",
+        "formatedValue": "faruzan"
+    },
+    {
+        "name": "Fischl",
+        "element": "Electro",
+        "weapon": "Bow",
+        "region": "Mondstat",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Fischl.png",
+        "ascensionStat": "",
+        "formatedValue": "fischl"
+    },
+    {
+        "name": "Freminet",
+        "element": "Cryo",
+        "weapon": "Claymore",
+        "region": "Fontaine",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Freminet.png",
+        "ascensionStat": "",
+        "formatedValue": "freminet"
+    },
+    {
+        "name": "Furina",
+        "element": "Hydro",
+        "weapon": "Sword",
+        "region": "Fontaine",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Furina.png",
+        "ascensionStat": "",
+        "formatedValue": "furina"
+    },
+    {
+        "name": "Ganyu",
+        "element": "Cryo",
+        "weapon": "Bow",
+        "region": "Liyue",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Ganyu.png",
+        "ascensionStat": "",
+        "formatedValue": "ganyu"
+    },
+    {
+        "name": "Gorou",
+        "element": "Geo",
+        "weapon": "Bow",
+        "region": "Inazuma",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Gorou.png",
+        "ascensionStat": "",
+        "formatedValue": "gorou"
+    },
+    {
+        "name": "Heizou",
+        "element": "Anemo",
+        "weapon": "Catalyst",
+        "region": "Inazuma",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Heizou.png",
+        "ascensionStat": "",
+        "formatedValue": "heizou"
+    },
+    {
+        "name": "Hu-tao",
+        "element": "Pyro",
+        "weapon": "Polearm",
+        "region": "Liyue",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Hutao.png",
+        "ascensionStat": "",
+        "formatedValue": "hutao"
+    },
+    {
+        "name": "Iansan",
+        "element": "Electro",
+        "weapon": "Polearm",
+        "region": "Natlan",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Iansan.png",
+        "ascensionStat": "",
+        "formatedValue": "iansan"
+    },
+    {
+        "name": "Jean",
+        "element": "Anemo",
+        "weapon": "Sword",
+        "region": "Mondstat",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Jean.png",
+        "ascensionStat": "",
+        "formatedValue": "jean"
+    },
+    {
+        "name": "Kazuha",
+        "element": "Anemo",
+        "weapon": "Sword",
+        "region": "Inazuma",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Kazuha.png",
+        "ascensionStat": "",
+        "formatedValue": "kazuha"
+    },
+    {
+        "name": "Keqing",
+        "element": "Electro",
+        "weapon": "Sword",
+        "region": "Liyue",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Keqing.png",
+        "ascensionStat": "",
+        "formatedValue": "keqing"
+    },
+    {
+        "name": "Klee",
+        "element": "Pyro",
+        "weapon": "Catalyst",
+        "region": "Mondstadt",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Klee.png",
+        "ascensionStat": "",
+        "formatedValue": "klee"
+    },
+    {
+        "name": "Mona",
+        "element": "Hydro",
+        "weapon": "Catalyst",
+        "region": "Mondstadt",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Mona.png",
+        "ascensionStat": "",
+        "formatedValue": "mona"
+    },
+    {
+        "name": "Mavuika",
+        "element": "Pyro",
+        "weapon": "Claymore",
+        "region": "Natlan",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Mavuika.png",
+        "ascensionStat": "",
+        "formatedValue": "mavuika"
+    },
+    {
+        "name": "Ningguang",
+        "element": "Geo",
+        "weapon": "Catalyst",
+        "region": "Liyue",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Ningguang.png",
+        "ascensionStat": "",
+        "formatedValue": "ningguang"
+    },
+    {
+        "name": "Noelle",
+        "element": "Geo",
+        "weapon": "Claymore",
+        "region": "Mondstadt",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Noelle.png",
+        "ascensionStat": "",
+        "formatedValue": "noelle"
+    },
+    {
+        "name": "Qiqi",
+        "element": "Cryo",
+        "weapon": "Sword",
+        "region": "Liyue",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Qiqi.png",
+        "ascensionStat": "",
+        "formatedValue": "qiqi"
+    },
+    {
+        "name": "Razor",
+        "element": "Electro",
+        "weapon": "Claymore",
+        "region": "Mondstadt",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Razor.png",
+        "ascensionStat": "",
+        "formatedValue": "razor"
+    },
+    {
+        "name": "Rosaria",
+        "element": "Cryo",
+        "weapon": "Polearm",
+        "region": "Mondstadt",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Rosaria.png",
+        "ascensionStat": "",
+        "formatedValue": "rosaria"
+    },
+    {
+        "name": "Kokomi",
+        "element": "Hydro",
+        "weapon": "Catalyst",
+        "region": "Inazuma",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Kokomi.png",
+        "ascensionStat": "",
+        "formatedValue": "kokomi"
+    },
+    {
+        "name": "Sayu",
+        "element": "Anemo",
+        "weapon": "Claymore",
+        "region": "Inazuma",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Sayu.png",
+        "ascensionStat": "",
+        "formatedValue": "sayu"
+    },
+    {
+        "name": "Shenhe",
+        "element": "Cryo",
+        "weapon": "Polearm",
+        "region": "Liyue",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Shenhe.png",
+        "ascensionStat": "",
+        "formatedValue": "shenhe"
+    },
+    {
+        "name": "Sucrose",
+        "element": "Anemo",
+        "weapon": "Catalyst",
+        "region": "Mondstadt",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Sucrose.png",
+        "ascensionStat": "",
+        "formatedValue": "sucrose"
+    },
+    {
+        "name": "Tartaglia",
+        "element": "Hydro",
+        "weapon": "Bow",
+        "region": "Snezhnaya",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Tartaglia.png",
+        "ascensionStat": "",
+        "formatedValue": "tartaglia"
+    },
+    {
+        "name": "Thoma",
+        "element": "Pyro",
+        "weapon": "Polearm",
+        "region": "Inazuma",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Thoma.png",
+        "ascensionStat": "",
+        "formatedValue": "thoma"
+    },
+    {
+        "name": "Venti",
+        "element": "Anemo",
+        "weapon": "Bow",
+        "region": "Mondstadt",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Venti.png",
+        "ascensionStat": "",
+        "formatedValue": "venti"
+    },
+    {
+        "name": "Xiao",
+        "element": "Anemo",
+        "weapon": "Polearm",
+        "region": "Liyue",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Xiao.png",
+        "ascensionStat": "",
+        "formatedValue": "xiao"
+    },
+    {
+        "name": "Xilonen",
+        "element": "Geo",
+        "weapon": "Sword",
+        "region": "Natlan",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Xilonen.png",
+        "ascensionStat": "",
+        "formatedValue": "xilonen"
+    },
+    {
+        "name": "Xingqiu",
+        "element": "Hydro",
+        "weapon": "Sword",
+        "region": "Liyue",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Xingqiu.png",
+        "ascensionStat": "",
+        "formatedValue": "xingqiu"
+    },
+    {
+        "name": "Xinyan",
+        "element": "Pyro",
+        "weapon": "Claymore",
+        "region": "Liyue",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Xinyan.png",
+        "ascensionStat": "",
+        "formatedValue": "xinyan"
+    },
+    {
+        "name": "Yae Miko",
+        "element": "Electro",
+        "weapon": "Catalyst",
+        "region": "Inazuma",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Yae_Miko.png",
+        "ascensionStat": "",
+        "formatedValue": "yae_miko"
+    },
+    {
+        "name": "Yaoyao",
+        "element": "Dendro",
+        "weapon": "Catalyst",
+        "region": "Liyue",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Yaoyao.png",
+        "ascensionStat": "",
+        "formatedValue": "yaoyao"
+    },
+    {
+        "name": "Zhongli",
+        "element": "Geo",
+        "weapon": "Polearm",
+        "region": "Liyue",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Zhongli.png",
+        "ascensionStat": "",
+        "formatedValue": "zhongli"
+    }
+]

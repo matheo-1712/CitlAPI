@@ -1,8 +1,14 @@
 // src/controllers/controller.ts
+
+/**
+ * Controller class
+ * @classdesc This class represents a controller with all the logic for the controller.
+ **/
+
 import { Request, Response } from "express";
 
 export abstract class Controller {
-    
+
     // Méthode pour envoyer une réponse avec succès
     protected sendSuccess(res: Response, data: any, status: number = 200): void {
         res.status(status).json({

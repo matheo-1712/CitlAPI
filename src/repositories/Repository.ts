@@ -1,6 +1,12 @@
 import { RowDataPacket } from "mysql2";
 import db from "../db";
 
+/**
+ * Repository class
+ * @classdesc This class represents a repository with all the logic for the database.
+ * @template T - The type of the model.
+ **/
+
 export abstract class Repository<T extends { id?: number }> {
 
     protected store = new Map<string, T>();
@@ -32,6 +38,10 @@ export abstract class Repository<T extends { id?: number }> {
     public async save(item: T): Promise<void> {
         // Logique de vérification de l'existence de l'ID
         item.id ??= await this.getNextId();
+        // Logique de vérification de la disponibilité de l'ID
+        if (await this.findById(item.id)) {
+            item.id = await this.getNextId();
+        }
         this.store.set(item.id.toString(), item);
         // Logique de sauvegarde dans la base de données
         try {
@@ -43,7 +53,7 @@ export abstract class Repository<T extends { id?: number }> {
     }
 
     // Logique de recherche
-    public async findById(id: number): Promise<T | null> {
+    async findById(id: number): Promise<T | null> {
         try {
             // Effectuer la requête avec un typage spécifique pour MySQL
             const [rows] = await db.query<RowDataPacket[]>(`SELECT * FROM ${this.tableName} WHERE id = ?`, [id]);
@@ -76,6 +86,17 @@ export abstract class Repository<T extends { id?: number }> {
         } catch (error) {
             console.error("Erreur lors de la suppression :", error);
             return false;
+        }
+    }
+
+    // Logique de mise à jour
+    async update(id: number, item: Partial<T>): Promise<T | null> {
+        try {
+            const [rows] = await db.query<RowDataPacket[]>(`UPDATE ${this.tableName} SET ? WHERE id = ?`, [item, id]);
+            return rows.length > 0 ? rows[0] as T : null;
+        } catch (error) {
+            console.error("Erreur lors de la mise à jour :", error);
+            return null;
         }
     }
 
