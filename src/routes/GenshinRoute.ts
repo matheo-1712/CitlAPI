@@ -1,12 +1,12 @@
 // src/routes/GenshinRoute.ts
 
+import { Router } from "express";
+import { GenshinCharacterController } from "../controllers/GenshinCharacterController";
+
 /**
  * GenshinRoute class
  * @classdesc This class represents a Genshin route.
  **/
-
-import { Router } from "express";
-import { GenshinCharacterController } from "../controllers/GenshinCharacterController";
 
 export class GenshinRoute {
     public readonly router = Router();

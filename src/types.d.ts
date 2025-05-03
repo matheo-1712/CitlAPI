@@ -13,9 +13,6 @@ declare global {
             DB_CONNEXION_LIMIT: string;
             DB_PORT: string;
 
-            // Palworld String Connexion
-            PALWORLD_STRING: string;
-
         }
     }
 }
