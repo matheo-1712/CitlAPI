@@ -50,6 +50,21 @@ export class GenshinCharacterController extends Controller {
         }
     }
 
+    // GET /characters/value/:value : Obtenir un personnage par sa formatedValue
+    async getByFormatedValue(req: Request, res: Response): Promise<void> {
+        const { value } = req.params;
+        try {
+            const character = await this.model.getByFormatedValue(value);
+            if (character) {
+                super.sendSuccess(res, character);
+            } else {
+                super.sendNotFound(res, `Personnage avec la formatedValue ${value} introuvable.`);
+            }
+        } catch (error) {
+            super.sendError(res, error instanceof Error ? error.message : String(error));
+        }
+    }
+
     // POST /characters : Créer un personnage
     async create(req: Request, res: Response): Promise<void> {
         try {

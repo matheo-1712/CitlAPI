@@ -15,6 +15,7 @@ export class GenshinRoute {
     constructor() {
         this.router.get("/characters", this.controller.getAll.bind(this.controller));
         this.router.get("/characters/:id", this.controller.getById.bind(this.controller));
+        this.router.get("/characters/value/:value", this.controller.getByFormatedValue.bind(this.controller));
         this.router.post("/characters", this.controller.create.bind(this.controller));
         this.router.put("/characters/:id", this.controller.update.bind(this.controller));
         this.router.delete("/characters/:id", this.controller.delete.bind(this.controller));

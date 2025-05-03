@@ -44,6 +44,12 @@ export class GenshinCharacterModel extends Model implements GenshinCharacterInte
         return await this.repository.findById(id);
     }
 
+    // Méthode pour obtenir le personnage par sa formatedValue
+    async getByFormatedValue(formatedValue: string): Promise<GenshinCharacterModel | null> {
+        return await this.repository.getByFormatedValue(formatedValue);
+    }
+
+
     // Méthode créer un personnage
     async create(data: Partial<GenshinCharacterModel>): Promise<GenshinCharacterModel> {
         const character = new GenshinCharacterModel(data);
