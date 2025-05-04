@@ -43,6 +43,7 @@ export class ServiceToken extends Service {
         const users: TokenInterface[] =
             [
                 { id: 1, utilisateur: "Citlali", role: "admin", createdAt: this.toSQLDate(new Date()) },
+                { id: 2, utilisateur: "CitlAPI", role: "admin", createdAt: this.toSQLDate(new Date()) },
             ];
 
         for (const user of users) {

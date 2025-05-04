@@ -77,13 +77,13 @@ export class GenshinCharacterController extends Controller {
 
     // PUT /characters/:id : Mettre à jour un personnage
     async update(req: Request, res: Response): Promise<void> {
-        const { id } = req.params;
         try {
+            const { id } = req.body;
             const character = await this.model.update(Number(id), req.body);
             if (character) {
                 super.sendSuccess(res, character);
             } else {
-                super.sendNotFound(res, `Personnage avec l'ID ${id} introuvable.`);
+                super.sendNotFound(res, `Personnage avec l'ID ${req.body.id} introuvable.`);
             }
         } catch (error) {
             super.sendError(res, error instanceof Error ? error.message : String(error));
@@ -92,7 +92,7 @@ export class GenshinCharacterController extends Controller {
 
     // DELETE /characters/:id : Supprimer un personnage
     async delete(req: Request, res: Response): Promise<boolean> {
-        const { id } = req.params;
+        const { id } = req.body;
         try {
             const success = await this.model.delete(Number(id));
             if (success) {

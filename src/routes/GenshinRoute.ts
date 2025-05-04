@@ -29,11 +29,7 @@ export class GenshinRoute {
         // POST /api/genshin/characters (création d'un personnage) (token d'authentification requis)
         this.router.post("/characters", this.middlewareAuth.handle.bind(this.middlewareAuth), async (req, res) => {
             try {
-                const genshinCharacter = await this.controller.create(req, res);
-                res.status(201).json({
-                    success: true,
-                    data: genshinCharacter,
-                });
+                await this.controller.create(req, res);
             } catch (err) {
                 console.error("Erreur lors de la création :", err);
                 res.status(500).json({ message: "Internal Server Error" });
@@ -43,11 +39,7 @@ export class GenshinRoute {
         // PUT /api/genshin/characters/ (modification d'un personnage) (token d'authentification requis)
         this.router.put("/characters", this.middlewareAuth.handle.bind(this.middlewareAuth), async (req, res) => {
             try {
-                const serveur = await this.controller.update(req, res);
-                res.status(200).json({
-                    success: true,
-                    data: serveur,
-                });
+                await this.controller.update(req, res);
             } catch (err) {
                 console.error("Erreur lors de la modification :", err);
                 res.status(500).json({ message: "Internal Server Error" });
@@ -57,12 +49,7 @@ export class GenshinRoute {
         // DELETE /api/genshin/characters/:id (suppression d'un personnage) (token d'authentification requis)
         this.router.delete("/characters", this.middlewareAuth.handle.bind(this.middlewareAuth), async (req, res) => {
             try {
-                const success = await this.controller.delete(req, res);
-                if (success) {
-                    res.status(200).json({ success: true, message: "Personnage supprimé." });
-                } else {
-                    res.status(404).json({ success: false, message: "Personnage non trouvé." });
-                }
+                await this.controller.delete(req, res);
             } catch (err) {
                 console.error("Erreur lors de la suppression :", err);
                 res.status(500).json({ message: "Internal Server Error" });

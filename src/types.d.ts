@@ -12,6 +12,7 @@ declare global {
             DB_NAME: string;
             DB_CONNEXION_LIMIT: string;
             DB_PORT: string;
+            API_TOKEN: string;
 
         }
     }

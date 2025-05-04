@@ -64,6 +64,7 @@ export class GenshinCharacterRepository extends Repository<GenshinCharacterModel
             else {
                 // Si le personnage n'existe pas, on le crée
                 const characterData: GenshinCharacterInterface = {
+                    id: character.id,
                     name: character.name,
                     element: character.element,
                     weapon: character.weapon,

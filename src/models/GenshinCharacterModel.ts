@@ -14,7 +14,7 @@ import { Model } from "./Model";
  */
 
 export class GenshinCharacterModel extends Model implements GenshinCharacterInterface, ModelInterface<GenshinCharacterModel> {
-    private readonly repository = new GenshinCharacterRepository();
+    id: number;
     name: string;
     element: string;
     weapon: string;
@@ -24,8 +24,12 @@ export class GenshinCharacterModel extends Model implements GenshinCharacterInte
     ascensionStat?: string;
     formatedValue: string;
 
-    constructor(data: Partial<GenshinCharacterModel>) {
+    constructor(
+        data: Partial<GenshinCharacterModel>,
+        private readonly repository = new GenshinCharacterRepository()
+    ) {
         super(data);
+        this.id = data.id ?? 0;
         this.name = data.name ?? "";
         this.element = data.element ?? "";
         this.weapon = data.weapon ?? "";
@@ -35,7 +39,7 @@ export class GenshinCharacterModel extends Model implements GenshinCharacterInte
         this.ascensionStat = data.ascensionStat ?? undefined;
         this.formatedValue = data.formatedValue ?? "";
     }
-    
+
     // Méthode pour obtenir l' ensemble des personnages
     async getAll(): Promise<GenshinCharacterModel[]> {
         return await this.repository.findAll();
@@ -55,15 +59,38 @@ export class GenshinCharacterModel extends Model implements GenshinCharacterInte
     // Méthode créer un personnage
     async create(data: Partial<GenshinCharacterModel>): Promise<GenshinCharacterModel> {
         const character = new GenshinCharacterModel(data);
-        await this.repository.save(character);
-        return new GenshinCharacterModel(data);
+        // Nettoyage des données avant de les enregistrer
+        const cleanedData : Partial<GenshinCharacterModel> = {
+            id: character.id,
+            name: character.name.trim(),
+            element: character.element.trim(),
+            weapon: character.weapon.trim(),
+            region: character.region.trim(),
+            rarity: character.rarity,
+            icon: character.icon.trim(),
+            ascensionStat: character.ascensionStat?.trim(),
+            formatedValue: character.formatedValue.trim(),
+        };
+        await this.repository.save(cleanedData as GenshinCharacterModel);
+        return character;
     }
 
     // Méthode pour mettre à jour un personnage
     async update(id: number, data: Partial<GenshinCharacterModel>): Promise<GenshinCharacterModel | null> {
         const character = new GenshinCharacterModel(data);
-        character.id = id;
-        return await this.repository.update(id, character);
+        // Nettoyage des données avant de les enregistrer
+        const cleanedData: Partial<GenshinCharacterModel> = {
+            name: character.name.trim(),
+            element: character.element.trim(),
+            weapon: character.weapon.trim(),
+            region: character.region.trim(),
+            rarity: character.rarity,
+            icon: character.icon.trim(),
+            ascensionStat: character.ascensionStat?.trim(),
+            formatedValue: character.formatedValue.trim(),
+        };
+        const isUpdated = await this.repository.update(id, cleanedData);
+        return isUpdated ? await this.getById(id) : null;
     }
 
     // Méthode pour supprimer un personnage
@@ -72,7 +99,7 @@ export class GenshinCharacterModel extends Model implements GenshinCharacterInte
     }
 
     // Méthode pour remplir la table avec des données JSON
-    async fillTable(): Promise<void> { 
+    async fillTable(): Promise<void> {
         await this.repository.fillTable();
     }
 }
