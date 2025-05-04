@@ -5,6 +5,7 @@ import helmet from "helmet"
 import { GenshinCharacterModel } from "./models/GenshinCharacterModel"
 import { GenshinRoute } from "./routes/GenshinRoute"
 import { TokenModel } from "./models/TokenModel"
+import { APITEST } from "./test/04-05-25APITEST"
 
 dotevnv.config()
 
@@ -69,6 +70,9 @@ async function start() {
 
     // Remplissage de la table des genshin characters
     await app.modelGenshinCharacter.fillTable();
+
+    // Test de l'API
+    APITEST.test();
 }
 
 start().catch((error) => {
