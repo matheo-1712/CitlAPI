@@ -34,23 +34,30 @@ export abstract class Repository<T extends { id?: number }> {
         return this.fetchNextId();
     }
 
-    // Logique de sauvegarde
     public async save(item: T): Promise<void> {
-        // Logique de vérification de l'existence de l'ID
-        item.id ??= await this.getNextId();
-        // Logique de vérification de la disponibilité de l'ID
-        if (await this.findById(item.id)) {
+        // Si l'ID n'est pas défini, on en génère un
+        if (item.id == null) {
             item.id = await this.getNextId();
+        } else {
+            // Si un ID est défini mais déjà utilisé, on en génère un nouveau
+            const exists = await this.findById(item.id);
+            if (exists) {
+                item.id = await this.getNextId();
+            }
         }
+    
+        // Ajoute dans le stockage en mémoire (si utilisé)
         this.store.set(item.id.toString(), item);
-        // Logique de sauvegarde dans la base de données
+    
+        // Tente la sauvegarde en base de données
         try {
             await db.query(`INSERT INTO ${this.tableName} SET ?`, item);
-        }
-        catch (error) {
+        } catch (error) {
             console.error("Erreur lors de la sauvegarde dans la base de données :", error);
+            throw error; // Repropage l'erreur pour la route Express
         }
     }
+    
 
     // Logique de recherche
     async findById(id: number): Promise<T | null> {
@@ -90,13 +97,22 @@ export abstract class Repository<T extends { id?: number }> {
     }
 
     // Logique de mise à jour
-    async update(id: number, item: Partial<T>): Promise<T | null> {
+    async update(id: number, item: Partial<T>): Promise<boolean> {
         try {
-            const [rows] = await db.query<RowDataPacket[]>(`UPDATE ${this.tableName} SET ? WHERE id = ?`, [item, id]);
-            return rows.length > 0 ? rows[0] as T : null;
+            const [result]: any = await db.query(`UPDATE ${this.tableName} SET ? WHERE id = ?`, [item, id]);
+            if (result.affectedRows > 0) {
+                // Met à jour l'élément dans le stockage en mémoire (si utilisé)
+                if (this.store.has(id.toString())) {
+                    const existingItem = this.store.get(id.toString()) as T;
+                    Object.assign(existingItem, item);
+                }
+                return true;
+            } else {
+                return false;
+            }
         } catch (error) {
             console.error("Erreur lors de la mise à jour :", error);
-            return null;
+            return false;
         }
     }
 

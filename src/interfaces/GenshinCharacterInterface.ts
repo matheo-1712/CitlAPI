@@ -6,7 +6,7 @@
 **/
 
 export interface GenshinCharacterInterface {
-    id?: number;
+    id: number;
     name: string;
     element: string;
     weapon: string;

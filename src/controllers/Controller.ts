@@ -1,11 +1,11 @@
 // src/controllers/controller.ts
 
+import { Request, Response } from "express";
+
 /**
  * Controller class
  * @classdesc This class represents a controller with all the logic for the controller.
  **/
-
-import { Request, Response } from "express";
 
 export abstract class Controller {
 
