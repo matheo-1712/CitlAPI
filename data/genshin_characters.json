@@ -40,16 +40,6 @@
         "formatedValue": "amber"
     },
     {
-        "name": "Itto",
-        "element": "Geo",
-        "weapon": "Claymore",
-        "region": "Inazuma",
-        "rarity": 5,
-        "icon": "https://furina.antredesloutres.fr/portrait/Itto.png",
-        "ascensionStat": "",
-        "formatedValue": "itto"
-    },
-    {
         "name": "Arlecchino",
         "element": "Pyro",
         "weapon": "Polearm",
@@ -330,6 +320,16 @@
         "formatedValue": "iansan"
     },
     {
+        "name": "Itto",
+        "element": "Geo",
+        "weapon": "Claymore",
+        "region": "Inazuma",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Itto.png",
+        "ascensionStat": "",
+        "formatedValue": "itto"
+    },
+    {
         "name": "Jean",
         "element": "Anemo",
         "weapon": "Sword",
@@ -570,6 +570,7 @@
         "formatedValue": "yaoyao"
     },
     {
+        "id": 58,
         "name": "Zhongli",
         "element": "Geo",
         "weapon": "Polearm",

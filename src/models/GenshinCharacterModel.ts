@@ -62,14 +62,14 @@ export class GenshinCharacterModel extends Model implements GenshinCharacterInte
         // Nettoyage des données avant de les enregistrer
         const cleanedData : Partial<GenshinCharacterModel> = {
             id: character.id,
-            name: character.name.trim(),
-            element: character.element.trim(),
-            weapon: character.weapon.trim(),
-            region: character.region.trim(),
+            name: character.name,
+            element: character.element,
+            weapon: character.weapon,
+            region: character.region,
             rarity: character.rarity,
-            icon: character.icon.trim(),
-            ascensionStat: character.ascensionStat?.trim(),
-            formatedValue: character.formatedValue.trim(),
+            icon: character.icon,
+            ascensionStat: character?.ascensionStat,
+            formatedValue: character.formatedValue,
         };
         await this.repository.save(cleanedData as GenshinCharacterModel);
         return character;

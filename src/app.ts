@@ -6,6 +6,7 @@ import { GenshinCharacterModel } from "./models/GenshinCharacterModel"
 import { GenshinRoute } from "./routes/GenshinRoute"
 import { TokenModel } from "./models/TokenModel"
 import { APITEST } from "./test/04-05-25APITEST"
+import { InfographicService } from "./services/InfographicService"
 
 dotevnv.config()
 
@@ -73,6 +74,9 @@ async function start() {
 
     // Test de l'API
     APITEST.test();
+
+    // Enregistrement des infographies
+    await InfographicService.saveInfographics_GI();
 }
 
 start().catch((error) => {
