@@ -6,6 +6,7 @@ import { GenshinCharacterModel } from "./models/GenshinCharacterModel"
 import { GenshinRoute } from "./routes/GenshinRoute"
 import { TokenModel } from "./models/TokenModel"
 import { APITEST } from "./test/04-05-25APITEST"
+import { InfographicService } from "./services/InfographicService"
 
 dotevnv.config()
 
@@ -27,7 +28,8 @@ class App {
 
     constructor(
         public readonly modelToken = new TokenModel({}),
-        public readonly modelGenshinCharacter = new GenshinCharacterModel({})
+        public readonly modelGenshinCharacter = new GenshinCharacterModel({}),
+        public readonly infographicService = new InfographicService()
     ) {
 
         this.app = express();
@@ -73,6 +75,9 @@ async function start() {
 
     // Test de l'API
     APITEST.test();
+
+    // Enregistrement des infographies
+    await app.infographicService.saveInfographics_GI();
 }
 
 start().catch((error) => {

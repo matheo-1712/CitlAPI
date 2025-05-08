@@ -34,7 +34,7 @@ export class GenshinCharacterRepository extends Repository<GenshinCharacterModel
     // Méthode pour récupérer un personnage par son nom
     async getByCharacterName(name: string): Promise<GenshinCharacterModel | null> {
         const results = await super.query(`SELECT * FROM genshin_characters WHERE name = ?`, [name]);
-        return results.length > 0 ? results[0] : null;
+        return results && results.length > 0 ? results[0] : null;
     }
 
     // Méthode pour récupérer un personnage par sa formatedValue
@@ -43,14 +43,19 @@ export class GenshinCharacterRepository extends Repository<GenshinCharacterModel
         return results.length > 0 ? results[0] : null;
     }
 
+    // Méthode pour obtenir un personnage par son ID
+    async getById(id: number): Promise<GenshinCharacterModel | null> {
+        const result = await super.findById(id);
+        return result || null;
+    }
+
 
     // Méthode pour remplir la table avec des données JSON
     async fillTable(): Promise<void> {
         const data = require("../../data/genshin_characters.json");
         for (const character of data) {
-            // Vérifie si un personnage avec le même nom existe déjà
-            const repository = new GenshinCharacterRepository();
-            const existingCharacter = await repository.getByFormatedValue(character.formatedValue);
+            // Vérifie si le personnage existe déjà dans la base de données
+            const existingCharacter = await this.getById(character.id);
             if (existingCharacter) {
                 // Si le personnage existe déjà, on met à jour ses données
                 const updatedCharacter: GenshinCharacterModel = {
