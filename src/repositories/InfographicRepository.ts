@@ -16,9 +16,9 @@ export class InfographicRepository extends Repository<InfographicInterface> {
     }
 
     // Méthode pour vérifier si une infographie existe déjà dans la base de données
-    async exists(infographic: InfographicInterface): Promise<boolean> {
-        const results = await super.query(`SELECT * FROM infographics WHERE id_genshin_character = ? AND jeu = ?`, [infographic.id_genshin_character, infographic.jeu]);
-        return results.length > 0;
+    async exists(infographic: InfographicInterface): Promise<InfographicInterface | null> {
+        const results = await super.query(`SELECT * FROM infographics WHERE id_genshin_character = ? AND jeu = ? AND build = ?`, [infographic.id_genshin_character, infographic.jeu, infographic.build]);
+        return results.length > 0 ? results[0] : null;
     }
 
     // Méthode pour mettre à jour une infographie
@@ -31,7 +31,8 @@ export class InfographicRepository extends Repository<InfographicInterface> {
         }
         return true
         } catch (error) {
-            return false;
+            console.error("Error updating infographic:", error);
+            throw error;
         }
     }
 

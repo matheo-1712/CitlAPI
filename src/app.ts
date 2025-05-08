@@ -28,7 +28,8 @@ class App {
 
     constructor(
         public readonly modelToken = new TokenModel({}),
-        public readonly modelGenshinCharacter = new GenshinCharacterModel({})
+        public readonly modelGenshinCharacter = new GenshinCharacterModel({}),
+        public readonly infographicService = new InfographicService()
     ) {
 
         this.app = express();
@@ -76,7 +77,7 @@ async function start() {
     APITEST.test();
 
     // Enregistrement des infographies
-    await InfographicService.saveInfographics_GI();
+    await app.infographicService.saveInfographics_GI();
 }
 
 start().catch((error) => {

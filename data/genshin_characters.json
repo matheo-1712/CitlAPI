@@ -570,7 +570,6 @@
         "formatedValue": "yaoyao"
     },
     {
-        "id": 58,
         "name": "Zhongli",
         "element": "Geo",
         "weapon": "Polearm",
@@ -579,5 +578,15 @@
         "icon": "https://furina.antredesloutres.fr/portrait/Zhongli.png",
         "ascensionStat": "",
         "formatedValue": "zhongli"
+    },
+    {
+        "name": "Escoffier",
+        "element": "Cryo",
+        "weapon": "Polearm",
+        "region": "Fontaine",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Escoffier.png",
+        "ascensionStat": "",
+        "formatedValue": "escoffier"
     }
 ]
