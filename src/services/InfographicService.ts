@@ -31,7 +31,7 @@ export class InfographicService extends Service {
     private static readonly repositoryInfographic = new InfographicRepository();
 
     constructor() {
-        super("InfographicService");
+        super("🎚️  Infographic - Service");
     }
 
     // Méthode pour démarrer le navigateur Puppeteer
@@ -139,6 +139,7 @@ export class InfographicService extends Service {
     // Méthode pour récupérer les infographies et les enregistrer dans la base de données
     public async saveInfographics_GI(): Promise<void> {
         // Démarrer le navigateur Puppeteer
+        this.logInfo("Démarrage de la récupération des infographies Genshin Impact... 🗒️");
         await this.startBrowser();
         try {
             const charactersList = await this.getGIAllCharacters();
@@ -146,6 +147,8 @@ export class InfographicService extends Service {
             for (const character of charactersList) {
                 await this.processCharacterInfographics(character);
             }
+
+            this.logInfo("Fin de la récupération des infographies Genshin Impact 🗒️");
         } catch (error) {
             this.logError("Erreur lors de la récupération des infographies", error instanceof Error ? error.message : String(error));
         }
