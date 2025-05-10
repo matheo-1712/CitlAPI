@@ -7,6 +7,7 @@ import { GenshinRoute } from "./routes/GenshinRoute"
 import { TokenModel } from "./models/TokenModel"
 import { APITEST } from "./test/04-05-25APITEST"
 import { InfographicService } from "./services/InfographicService"
+import { InfographicRoute } from "./routes/InfographicRoute"
 
 dotevnv.config()
 
@@ -48,6 +49,7 @@ class App {
             res.send("Hello World!")
         })
         this.app.use("/api/genshin", new GenshinRoute().router)
+        this.app.use("/api/infographics", new InfographicRoute().router)
     }
 
     public start() {
@@ -74,7 +76,7 @@ async function start() {
     await app.modelGenshinCharacter.fillTable();
 
     // Test de l'API
-    APITEST.test();
+    //APITEST.test();
 
     // Enregistrement des infographies
     await app.infographicService.saveInfographics_GI();
