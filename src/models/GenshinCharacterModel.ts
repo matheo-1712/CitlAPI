@@ -11,6 +11,8 @@ import { Model } from "./Model";
  * @implements ModelInterface<GenshinCharacterModel>, GenshinCharacterInterface
  * @classdesc This class represents a Genshin character model.
  * @sql_table_name genshin_characters
+ * @sql_table_fields id, name, element, weapon, region, rarity, icon, ascensionStat, formatedValue
+ * @sql_table_primary_key id
  */
 
 export class GenshinCharacterModel extends Model implements GenshinCharacterInterface, ModelInterface<GenshinCharacterModel> {
@@ -54,7 +56,6 @@ export class GenshinCharacterModel extends Model implements GenshinCharacterInte
     async getByFormatedValue(formatedValue: string): Promise<GenshinCharacterModel | null> {
         return await this.repository.getByFormatedValue(formatedValue);
     }
-
 
     // Méthode créer un personnage
     async create(data: Partial<GenshinCharacterModel>): Promise<GenshinCharacterModel> {

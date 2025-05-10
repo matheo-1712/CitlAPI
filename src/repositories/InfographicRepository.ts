@@ -15,21 +15,33 @@ export class InfographicRepository extends Repository<InfographicInterface> {
         super("infographics");
     }
 
+    // Méthode pour obtenir toutes les infographies
+    async getAll(): Promise<InfographicInterface[] | null> {
+        const results = await super.findAll();
+        return results.length > 0 ? results : null;
+    }
+
     // Méthode pour vérifier si une infographie existe déjà dans la base de données
     async exists(infographic: InfographicInterface): Promise<InfographicInterface | null> {
         const results = await super.query(`SELECT * FROM infographics WHERE id_genshin_character = ? AND jeu = ? AND build = ?`, [infographic.id_genshin_character, infographic.jeu, infographic.build]);
         return results.length > 0 ? results[0] : null;
     }
 
+    // Méthode pour obtenir l'infographie d'un Jeu spécifique
+    async getByJeu(jeu: string): Promise<InfographicInterface[] | null> {
+        const results = await super.query(`SELECT * FROM infographics WHERE jeu = ?`, [jeu]);
+        return results.length > 0 ? results : null;
+    }
+
     // Méthode pour mettre à jour une infographie
     async updateInfographic(infographic: InfographicInterface): Promise<boolean> {
         try {
-        if (infographic.id !== undefined) {
-            await super.update(infographic.id, infographic);
-        } else {
-            throw new Error("Infographic ID is undefined.");
-        }
-        return true
+            if (infographic.id !== undefined) {
+                await super.update(infographic.id, infographic);
+            } else {
+                throw new Error("Infographic ID is undefined.");
+            }
+            return true
         } catch (error) {
             console.error("Error updating infographic:", error);
             throw error;
@@ -38,9 +50,10 @@ export class InfographicRepository extends Repository<InfographicInterface> {
 
     // Méthode pour obtenir l'infographie par son ID de personnage (Genshin Impact)
     async getByIdGI(id: number): Promise<InfographicInterface[] | null> {
-        const results = await super.query(`SELECT * FROM infographics WHERE id_genshin_character = ? AND jeu = "GI`, [id]);
+        const results = await super.query(`SELECT * FROM infographics WHERE id_genshin_character = ? AND jeu = "GI"`, [id]);
         return results.length > 0 ? results : null;
     }
+
     // Méthode pour enregistrer une infographie (Genshin Impact)
     async saveGI(data: InfographicInterface): Promise<void> {
         // Préparation de l'objet pour la base de données
@@ -54,12 +67,12 @@ export class InfographicRepository extends Repository<InfographicInterface> {
         await super.save(infographicData);
     }
 
-
     // Méthode pour obtenir l'infographie par son ID de personnage (Honkai Star Rail)
     async getByIdHSR(id: number): Promise<InfographicInterface[] | null> {
         const results = await super.query(`SELECT * FROM infographics WHERE id_genshin_character = ? AND jeu = "HSR`, [id]);
         return results.length > 0 ? results : null;
     }
+
     // Méthode pour enregistrer une infographie (Honkai Star Rail)
     async saveHSR(data: InfographicInterface): Promise<void> {
         // Préparation de l'objet pour la base de données
