@@ -5,7 +5,6 @@ import helmet from "helmet"
 import { GenshinCharacterModel } from "./models/GenshinCharacterModel"
 import { GenshinRoute } from "./routes/GenshinRoute"
 import { TokenModel } from "./models/TokenModel"
-import { APITEST } from "./test/04-05-25APITEST"
 import { InfographicService } from "./services/InfographicService"
 import { InfographicRoute } from "./routes/InfographicRoute"
 
