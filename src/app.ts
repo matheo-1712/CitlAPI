@@ -46,7 +46,7 @@ class App {
 
     private routes() {
         this.app.get("/", (req, res) => {
-            res.send("Hello World!")
+            res.status(200).send("Bienvenue sur l'API CitlAPI !")
         })
         this.app.use("/api/genshin", new GenshinRoute().router)
         this.app.use("/api/infographics", new InfographicRoute().router)
