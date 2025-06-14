@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GenshinCharacterInterface } from "../interfaces/GenshinCharacterInterface";
+import { GenshiCharacterInterface } from "../interfaces/GenshiCharacterInterface";
 
 export class APITEST {
     public static async test() {
@@ -44,7 +44,7 @@ export class APITEST {
 
         // Vérification de la route POST /api/genshin/characters sans token d'authentification
         try {
-            const character: GenshinCharacterInterface = {
+            const character: GenshiCharacterInterface = {
                 id: 1000,
                 name: "Ayaka",
                 element: "cry",
@@ -76,7 +76,7 @@ export class APITEST {
 
         // Vérification de la route POST /api/genshin/characters avec token d'authentification
         try {
-            const character: GenshinCharacterInterface = {
+            const character: GenshiCharacterInterface = {
                 id: 1000,
                 name: "Ayaka",
                 element: "cry",
@@ -105,7 +105,7 @@ export class APITEST {
 
         // Vérification de la route PUT /api/genshin/characters avec token d'authentification
         try {
-            const character: GenshinCharacterInterface = {
+            const character: GenshiCharacterInterface = {
                 id: 1000,
                 name: "TEST ENCORE",
                 element: "cry",

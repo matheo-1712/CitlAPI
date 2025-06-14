@@ -39,7 +39,7 @@ export abstract class Repository<T extends { id?: number }> {
         if (item.id == null) {
             item.id = await this.getNextId();
         } else {
-            // Si un ID est défini mais déjà utilisé, on en génère un nouveau
+            // Si un ID est défini, mais déjà utilisé, on en génère un nouveau
             const exists = await this.findById(item.id);
             if (exists) {
                 item.id = await this.getNextId();

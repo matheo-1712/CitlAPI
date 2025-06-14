@@ -1,4 +1,4 @@
-import { GenshinCharacterInterface } from "../interfaces/GenshinCharacterInterface";
+import { GenshinCharacterInterface } from "../interfaces/GenshiCharacterInterface";
 import { GenshinCharacterModel } from "../models/GenshinCharacterModel";
 import { Repository } from "./Repository";
 

@@ -4,7 +4,7 @@ import { Service } from "./Service";
 import { InfographicInterface } from "../interfaces/InfographicInterface";
 import { GenshinCharacterModel } from "../models/GenshinCharacterModel";
 import { InfographicRepository } from "../repositories/InfographicRepository";
-import { GenshinCharacterInterface } from "../interfaces/GenshinCharacterInterface";
+import { GenshinCharacterInterface } from "../interfaces/GenshiCharacterInterface";
 
 /**
  * InfographicService class

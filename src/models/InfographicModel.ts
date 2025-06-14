@@ -7,7 +7,7 @@ import { Model } from "./Model";
  * InfographicModel class
  * @extends Model
  * @implements ModelInterface<InfographicModel>, InfographicInterface
- * @classdesc This class represents a Infographic model.
+ * @classdesc This class represents an Infographic model.
  * @sql_table_name infographics
  * @sql_table_fields id, id_genshin_character, jeu, url, build, source
  * @sql_table_primary_key id

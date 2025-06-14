@@ -1,6 +1,6 @@
 // src/models/GenshinCharacterModel.ts
 
-import { GenshinCharacterInterface } from "../interfaces/GenshinCharacterInterface";
+import { GenshinCharacterInterface } from "../interfaces/GenshiCharacterInterface";
 import { ModelInterface } from "../interfaces/ModelInterface";
 import { GenshinCharacterRepository } from "../repositories/GenshinCharacterRepository";
 import { Model } from "./Model";
