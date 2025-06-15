@@ -58,7 +58,7 @@ export class InfographicRoute extends Routes {
     private initializeRoutes() {
 
         // 🔹 Enregistrer les routes (héritage)
-        Routes.registerRoutes(this.genshinRoutesList, "genshin");
+        Routes.registerRoutes(this.genshinRoutesList);
         // GET /api/infographics : Obtenir toutes les infographies
         this.router.get("/", this.controller.getAll.bind(this.controller));
 

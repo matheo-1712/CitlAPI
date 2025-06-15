@@ -28,9 +28,10 @@ export class Routes implements ApiRoutesInterface {
     private static readonly repository = new RepositoryApiRoutes();
 
     // Enregistrement des routes
-     static registerRoutes(routes: Routes[], type : string): void {
+     static registerRoutes(routes: Routes[], type? : string): void {
         routes.forEach(route => {
-            route.route =`${process.env.API_URL}/${type}${route.route}`;
+            if (type) route.route = `${process.env.API_URL}/${type}${route.route}`;
+            else route.route =`${process.env.API_URL}${route.route}`
             Routes.repository.addRoute(route);
         });
     }
