@@ -3,6 +3,7 @@
 /**
  * TokenInterface interface
  * @interfacedesc This interface represents a token interface.
+ * @author matheo-1712
  */
 
 export interface TokenInterface {

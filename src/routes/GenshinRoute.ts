@@ -82,10 +82,14 @@ export class GenshinRoute extends Routes {
 
     constructor() {
         super("/genshin", "GET", "GenshinRoute", "");
-
         // 🔹 Enregistrer les routes (héritage)
         Routes.registerRoutes(this.genshinRoutesList, "genshin");
+        this.router = Router();
+        this.initializeRoutes();
+    }
 
+    private initializeRoutes() {
+        // TODO : REFAIRE LES COMMENTAIRES
         // 🔹 Routes publiques
         this.router.get("/characters", this.controller.getAll.bind(this.controller));
         this.router.get("/characters/:id", this.controller.getById.bind(this.controller));

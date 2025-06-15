@@ -51,6 +51,11 @@ export class InfographicRoute extends Routes {
 
     constructor() {
         super("/genshin", "GET", "GenshinRoute", "");
+        this.router = Router();
+        this.initializeRoutes();
+    }
+
+    private initializeRoutes() {
 
         // 🔹 Enregistrer les routes (héritage)
         Routes.registerRoutes(this.genshinRoutesList, "genshin");

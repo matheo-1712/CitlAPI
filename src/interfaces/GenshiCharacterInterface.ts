@@ -3,6 +3,7 @@
 /**
  * GenshinCharacterInterface interface
  * @interfacedesc This interface represents a Genshin character interface.
+ * @author matheo-1712
 **/
 
 export interface GenshinCharacterInterface {

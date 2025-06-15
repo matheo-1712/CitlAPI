@@ -4,6 +4,7 @@
  * ModelInterface interface
  * @interfacedesc This interface represents a model interface.
  * @template T - The type of the model.
+ * @author matheo-1712
 **/
 
 export interface ModelInterface<T> {

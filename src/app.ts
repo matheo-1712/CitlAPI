@@ -7,6 +7,7 @@ import { GenshinRoute } from "./routes/GenshinRoute"
 import { TokenModel } from "./models/TokenModel"
 import { InfographicService } from "./services/InfographicService"
 import { InfographicRoute } from "./routes/InfographicRoute"
+import {ApiRoute} from "./routes/ApiRoute";
 
 dotevnv.config()
 
@@ -49,6 +50,7 @@ class App {
         })
         this.app.use("/api/genshin", new GenshinRoute().router)
         this.app.use("/api/infographics", new InfographicRoute().router)
+        this.app.use("/api/routes", new ApiRoute().router)
     }
 
     public start() {
