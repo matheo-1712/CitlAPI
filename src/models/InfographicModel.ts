@@ -1,3 +1,5 @@
+// src/models/InfographicModel.ts
+
 import { InfographicInterface } from "../interfaces/InfographicInterface";
 import { ModelInterface } from "../interfaces/ModelInterface";
 import { InfographicRepository } from "../repositories/InfographicRepository";

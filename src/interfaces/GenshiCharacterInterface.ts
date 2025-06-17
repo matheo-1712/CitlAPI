@@ -1,4 +1,4 @@
-// GenshinCharacterInterface.ts
+// src/interfaces/GenshiCharacterInterface.ts
 
 /**
  * GenshinCharacterInterface interface

@@ -1,4 +1,4 @@
-// /src/interfaces/ModelInterface.ts
+// src/interfaces/ModelInterface.ts
 
 /**
  * ModelInterface interface
