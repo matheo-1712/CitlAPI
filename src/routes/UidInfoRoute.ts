@@ -19,7 +19,7 @@ export class UidInfoRoute extends Routes{
         {
             id: 201,
             alias: "uid-infos-getByUid",
-            route: "/uid-infos/",
+            route: "/uid-infos",
             method: "GET",
             parameters: ":uid",
             comment: "Obtenir une info UID par son uid",

@@ -25,7 +25,7 @@ export class InfographicRoute extends Routes {
         {
             id: 101,
             alias: "infographics-getById",
-            route: "/infographics/",
+            route: "/infographics",
             method: "GET",
             parameters: ":id",
             comment: "Obtenir une infographie par son ID",
@@ -33,7 +33,7 @@ export class InfographicRoute extends Routes {
         {
             id: 102,
             alias: "infographics-getByIdGenshinCharacter",
-            route: "/infographics/genshin/",
+            route: "/infographics/genshin",
             method: "GET",
             parameters: ":id",
             comment: "Obtenir une infographie par son ID de personnage",
@@ -41,7 +41,7 @@ export class InfographicRoute extends Routes {
         {
             id: 103,
             alias: "infographics-getByJeu",
-            route: "/infographics/jeu/",
+            route: "/infographics/jeu",
             method: "GET",
             parameters: ":jeu",
             comment: "Obtenir les infographies par le jeu",
