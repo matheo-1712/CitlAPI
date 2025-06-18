@@ -46,7 +46,11 @@ export class IdDiscordToUidModel extends Model implements IdDiscordToUidInterfac
         return data ? new IdDiscordToUidModel(data) : null;
     }
 
-
+    // Method to get the UID by ID Discord from the database
+    async getUidByUid(uid: string): Promise<IdDiscordToUidInterface | null> {
+        const data = await this.repository.getUidByUid(uid);
+        return data ? new IdDiscordToUidModel(data) : null;
+    }
 
 
 }

@@ -29,4 +29,10 @@ export class IdDiscordToUidRepository extends Repository<IdDiscordToUidInterface
         const results = await super.query(`SELECT * FROM ${this.tableName} WHERE id_discord = ?`, [id_discord]);
         return results.length > 0 ? results[0] : null;
     }
+
+    // Method to get a UidInfoModel instance by UID from the database
+    public async getUidByUid(uid: string): Promise<IdDiscordToUidInterface | null> {
+        const results = await super.query(`SELECT * FROM ${this.tableName} WHERE uid_genshin = ?`, [uid]);
+        return results.length > 0 ? results[0] : null;
+    }
 }
