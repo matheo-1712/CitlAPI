@@ -7,6 +7,7 @@
  */
 
 export interface IdDiscordToUidInterface {
+    id?: number | undefined,
     id_discord: string,
     uid_genshin: string | null;
 }

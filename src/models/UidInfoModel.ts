@@ -91,7 +91,7 @@ export class UidInfoModel extends Model implements UidInfosInterface {
     }
 
     // Method to save a UidInfoModel instance to the database
-    async save(): Promise<void> {
+    async create(): Promise<void> {
         await this.repository.save(this);
     }
 }
