@@ -2,13 +2,13 @@
 
 import {Routes} from "./Route";
 import {Router} from "express";
-import {UidInfoController} from "../controllers/UidInfoController";
 import {IdDiscordToUidController} from "../controllers/IdDiscordToUidController";
-import axios from "axios";
+import {MiddlewareAuth} from "../middlewares/AuthMiddleware";
 
 export class IdDiscordToUidRoute extends Routes {
     public readonly router = Router();
     private readonly controller = new IdDiscordToUidController();
+    private readonly middlewareAuth = new MiddlewareAuth();
     private readonly uidInfoRoutesList: Routes[] = [
         {
             id: 300,
@@ -49,8 +49,9 @@ export class IdDiscordToUidRoute extends Routes {
         // Déclarer les routes
         this.router.get("/", this.controller.getAll.bind(this.controller));
         // this.router.get("/:id_discord", this.controller.getByUid().bind(this.controller));
-
-        // TODO : Route avec authentification (non actif pour les tests)
-        this.router.post("/", this.controller.create.bind(this.controller));
+        this.router.post("/",
+            this.middlewareAuth.handle.bind(this.middlewareAuth),
+            this.controller.create.bind(this.controller)
+        );
     }
 }
