@@ -20,7 +20,7 @@ export class IdDiscordToUidRoute extends Routes {
         },
         {
             id: 301,
-            alias: "id-discord-to-uid-getByDiscordId",
+            alias: "id-discord-to-uid-getByUid",
             route: "/id-discord-to-uid",
             method: "GET",
             parameters: ":id_discord",
