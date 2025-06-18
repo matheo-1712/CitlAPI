@@ -2,6 +2,7 @@
 
 import {Model} from "./Model";
 import {UidInfosInterface} from "../interfaces/UidInfosInterface";
+import {UidInfoRepository} from "../repositories/UidInfoRepository";
 
 /**
  * Represents the user information model for a unique identifier (UID).
@@ -45,6 +46,8 @@ export class UidInfoModel extends Model implements UidInfosInterface {
     theaterMode: string;
     playerIcon: string;
 
+    private readonly repository = new UidInfoRepository();
+
     constructor(
         data: Partial<UidInfoModel>
     ) {
@@ -61,5 +64,34 @@ export class UidInfoModel extends Model implements UidInfosInterface {
         this.theaterAct = data.theaterAct ?? 0;
         this.theaterMode = data.theaterMode ?? "";
         this.playerIcon = data.playerIcon ?? "";
+    }
+
+    // Method to convert the model to a JSON object
+    toJSON(): Record<string, any> {
+        return {
+            id: this.id,
+            uid: this.uid,
+            nickname: this.nickname,
+            level: this.level,
+            worldLevel: this.worldLevel,
+            signature: this.signature,
+        }
+    }
+
+    // Method to get all UidInfoModel instances from the database
+    async getAll(): Promise<UidInfoModel[]> {
+        const data = await this.repository.getAll();
+        return data.map((item) => new UidInfoModel(item));
+    }
+
+    // Method to get a UidInfoModel instance by UID from the database
+    async getByUid(uid: string): Promise<UidInfoModel | null> {
+        const data = await this.repository.getByUid(uid);
+        return data ? new UidInfoModel(data) : null;
+    }
+
+    // Method to save a UidInfoModel instance to the database
+    async save(): Promise<void> {
+        await this.repository.save(this);
     }
 }

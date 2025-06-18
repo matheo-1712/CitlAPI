@@ -37,6 +37,7 @@ export class ApiRoutesModel extends Model implements ApiRoutesInterface {
         this.comment = data.comment ?? "";
     }
 
+    // Method to convert the model to a JSON object
     toJSON(): Record<string, any> {
         return {
             id: this.id,

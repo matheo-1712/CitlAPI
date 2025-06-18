@@ -8,6 +8,7 @@ import { TokenModel } from "./models/TokenModel"
 import { InfographicService } from "./services/InfographicService"
 import { InfographicRoute } from "./routes/InfographicRoute"
 import {ApiRoute} from "./routes/ApiRoute";
+import {UidInfoRoute} from "./routes/UidInfoRoute";
 
 dotevnv.config()
 
@@ -51,6 +52,7 @@ class App {
         this.app.use("/api/genshin", new GenshinRoute().router)
         this.app.use("/api/infographics", new InfographicRoute().router)
         this.app.use("/api/routes", new ApiRoute().router)
+        this.app.use("/api/uid-infos", new UidInfoRoute().router)
     }
 
     public start() {
