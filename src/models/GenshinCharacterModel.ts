@@ -81,14 +81,14 @@ export class GenshinCharacterModel extends Model implements GenshinCharacterInte
         const character = new GenshinCharacterModel(data);
         // Nettoyage des données avant de les enregistrer
         const cleanedData: Partial<GenshinCharacterModel> = {
-            name: character.name.trim(),
-            element: character.element.trim(),
-            weapon: character.weapon.trim(),
-            region: character.region.trim(),
+            name: character.name?.trim() ?? "",
+            element: character.element?.trim() ?? "",
+            weapon: character.weapon?.trim() ?? "",
+            region: character.region?.trim() ?? "",
             rarity: character.rarity,
-            icon: character.icon.trim(),
+            icon: character.icon?.trim() ?? "",
             ascensionStat: character.ascensionStat?.trim(),
-            formatedValue: character.formatedValue.trim(),
+            formatedValue: character.formatedValue?.trim() ?? ""
         };
         const isUpdated = await this.repository.update(id, cleanedData);
         return isUpdated ? await this.getById(id) : null;

@@ -1,5 +1,8 @@
 import { RowDataPacket } from "mysql2";
 import db from "../db";
+import {UidInfosInterface} from "../interfaces/UidInfosInterface";
+import {GenshinCharacterModel} from "../models/GenshinCharacterModel";
+import {InfographicModel} from "../models/InfographicModel";
 
 /**
  * Repository class

@@ -22,5 +22,4 @@ export class Model {
             id: this.id,
         };
     }
-
 }
