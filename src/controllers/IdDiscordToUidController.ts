@@ -18,7 +18,7 @@ export class IdDiscordToUidController extends Controller {
         res.status(200).send("Request handled successfully.");
     }
 
-    // GET /id-discord-to-uids : Obtenir toutes les infos UID
+    // GET /id-discord-to-uid : Obtenir toutes les infos UID
     async getAll(req: Request, res: Response): Promise<void> {
         try {
             const idDiscordToUid = await this.model.getAll();
@@ -28,7 +28,7 @@ export class IdDiscordToUidController extends Controller {
         }
     }
 
-    // GET /id-discord-to-uids/:id_discord : Obtenir une info UID par son uid
+    // GET /id-discord-to-uid/:id_discord : Obtenir une info UID par son uid
     async getUidByIdDiscord(req: Request, res: Response): Promise<void> {
         const { id_discord } = req.params;
         try {
@@ -39,7 +39,7 @@ export class IdDiscordToUidController extends Controller {
         }
     }
 
-    // POST /id-discord-to-uids : Créer un enregistrement ID Discord to UID
+    // POST /id-discord-to-uid : Créer un enregistrement ID Discord to UID
     async create(req: Request, res: Response): Promise<void> {
         try {
             const idDiscordToUid = await this.model.create(req.body);

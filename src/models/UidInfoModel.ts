@@ -85,13 +85,29 @@ export class UidInfoModel extends Model implements UidInfosInterface {
     }
 
     // Method to get a UidInfoModel instance by UID from the database
-    async getByUid(uid: string): Promise<UidInfoModel | null> {
+    async getByUid(uid: string): Promise<UidInfosInterface | null> {
         const data = await this.repository.getByUid(uid);
         return data ? new UidInfoModel(data) : null;
     }
 
+    // Method to get a Id by UID from the database
+    async getIdByUid(uid: string): Promise<number | undefined | null> {
+        const data = await this.repository.getIdByUid(uid);
+        return data ? data.id : null;
+    }
+
+    // Method to check if a UidInfoModel instance exists in the database by UID
+    async exists(uid: string): Promise<boolean> {
+        return (await this.repository.getByUid(uid)) !== null;
+    }
+
     // Method to save a UidInfoModel instance to the database
-    async create(): Promise<void> {
-        await this.repository.save(this);
+    async create(uidInfo: UidInfosInterface): Promise<void> {
+        await this.repository.save(uidInfo);
+    }
+
+    // Method to update a UidInfoModel instance in the database
+    async update(id: number, uidInfo: UidInfosInterface): Promise<void> {
+        await this.repository.update(id, uidInfo);
     }
 }

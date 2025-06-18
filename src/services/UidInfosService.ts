@@ -3,6 +3,7 @@
 import {Service} from "./Service";
 import {Wrapper} from 'enkanetwork.js';
 import {UidInfosInterface} from "../interfaces/UidInfosInterface";
+import {UidInfoModel} from "../models/UidInfoModel";
 
 /**
  * UidInfosService is a service class that extends the base Service class.
@@ -10,25 +11,35 @@ import {UidInfosInterface} from "../interfaces/UidInfosInterface";
  */
 
 export  class UidInfosService extends Service{
-    constructor() {
+    constructor(
+        private readonly model: UidInfoModel = new UidInfoModel({}),
+    ) {
         super('Uid - Infos - Service');
     }
 
     async fetchUidInfos(uid_genshin: string | null): Promise<void> {
         // Fetch UID infos from Genshin API
         try {
+            // Récupérer les informations du joueur pour Genshin
+            this.getEnkaData(uid_genshin).then((data) => {
+                this.registerUidInfosEnka(data);
+            });
 
         } catch (error) {
 
         }
-
     }
 
     // Method to get Enka data
-    async getEnkaData(uid: string): Promise<any> {
+    async getEnkaData(uid: string | null): Promise<any> {
         try {
             // Récupérer les informations du joueur pour Genshin 
             const { genshin } = new Wrapper();
+
+            // Vérifier si l'UID est null
+            if (uid === null) {
+                return null;
+            }
 
             return await genshin.getPlayer(uid);
 
@@ -41,6 +52,11 @@ export  class UidInfosService extends Service{
     // Method to register UID infos
     async registerUidInfosEnka(data: any): Promise<boolean> {
         try {
+            // Verify data existence
+            if (!data || !data.player) {
+                return false;
+            }
+
             const towerFloor = data.player.abyss.floor + "-" + data.player.abyss.chamber + "-" + data.player.abyss.stars + '⭐';
 
             // Ajouter les informations de l'utilisateur
@@ -58,63 +74,22 @@ export  class UidInfosService extends Service{
                 playerIcon: data.player.profilePicture.assets.icon
             }
 
-            if (await UidInfos.exists(uid_infos.uid)) {
-                try {
-                    await UidInfos.update(uid_infos);
-                    return true;
-                } catch (error) {
-                    this.logError("Erreur lors de la mise à jour des informations de l'UID:", String(error));
-                    return false;
-                }
-
-            } else {
-                // Ajouter les informations de l'utilisateur
-                try {
-                    await UidInfos.add(uid_infos);
-                    return true;
-                } catch (error) {
-                    this.logError("Erreur lors de l'ajout des informations de l'UID:", String(error));
-                    return false;
-                }
-            }
-
-        } catch (error) {
-            this.logError("Erreur lors de la mise à jour des informations pour l'utilisateur:", String(error));
-            return false;
-        }
-    }
-
-    // Method to register characters
-    async registerCharactersEnka(data: any): Promise<boolean> {
-        try {
-            for (const characterData of data.player.showcase) {
-                const character: PlayerCharacter = {
-                    uid_genshin: data.uid,
-                    character_id: Number(characterData.characterId),
-                    name: characterData.name,
-                    element: characterData.element,
-                    level: Number(characterData.level),
-                    constellations: characterData.constellations,
-                    icon: characterData.assets.icon,
-                }
-
-                const characterExists = await PlayerCharacter.exists(character.uid_genshin, character.character_id);
-                if (characterExists) {
-                    try {
-                        await PlayerCharacter.update(character);
-                    } catch (error) {
-                        this.logError("Erreur lors de la mise à jour du personnage:", String(error));
+            try {
+                if (await this.model.exists(uid_infos.uid)) {
+                    const id = await this.model.getIdByUid(uid_infos.uid);
+                    if (id) {
+                        await this.model.update(id, uid_infos);
+                        return true;
                     }
+                    return false;
                 } else {
-                    try {
-                        await PlayerCharacter.add(character);
-                    } catch (error) {
-                        this.logError("Erreur lors de l'ajout du personnage:", String(error));
-                    }
+                    await this.model.create(uid_infos);
+                    return true;
                 }
+            } catch (error) {
+                this.logError("Erreur lors de la gestion des informations de l'UID:", String(error));
+                return false;
             }
-            return true;
-
         } catch (error) {
             this.logError("Erreur lors de la mise à jour des informations pour l'utilisateur:", String(error));
             return false;
