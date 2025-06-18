@@ -48,7 +48,7 @@ export class IdDiscordToUidRoute extends Routes {
         Routes.registerRoutes(this.uidInfoRoutesList);
         // Déclarer les routes
         this.router.get("/", this.controller.getAll.bind(this.controller));
-        // this.router.get("/:id_discord", this.controller.getByUid().bind(this.controller));
+        this.router.get("/:id_discord", this.controller.getUidByIdDiscord.bind(this.controller));
         this.router.post("/",
             this.middlewareAuth.handle.bind(this.middlewareAuth),
             this.controller.create.bind(this.controller)
