@@ -34,4 +34,9 @@ export class UidInfoRepository extends Repository<UidInfosInterface>{
         return results.length > 0 ? results[0] : null;
     }
 
+    // Méthode pour obtenir un ID par l'uid
+    async getIdByUid(uid: string): Promise<UidInfosInterface | null> {
+        const results = await this.query("SELECT id FROM uid_infos WHERE uid = ? LIMIT 1", [uid]);
+        return results.length > 0 ? results[0] : null;
+    }
 }

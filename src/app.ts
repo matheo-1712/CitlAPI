@@ -9,6 +9,8 @@ import { InfographicService } from "./services/InfographicService"
 import { InfographicRoute } from "./routes/InfographicRoute"
 import {ApiRoute} from "./routes/ApiRoute";
 import {UidInfoRoute} from "./routes/UidInfoRoute";
+import axios from "axios";
+import {IdDiscordToUidRoute} from "./routes/IdDiscordToUidRoute";
 
 dotevnv.config()
 
@@ -53,6 +55,7 @@ class App {
         this.app.use("/api/infographics", new InfographicRoute().router)
         this.app.use("/api/routes", new ApiRoute().router)
         this.app.use("/api/uid-infos", new UidInfoRoute().router)
+        this.app.use("/api/id-discord-to-uid", new IdDiscordToUidRoute().router)
     }
 
     public start() {
@@ -77,9 +80,6 @@ async function start() {
 
     // Remplissage de la table des genshin characters
     await app.modelGenshinCharacter.fillTable();
-
-    // Test de l'API
-    //APITEST.test();
 
     // Enregistrement des infographies
     await app.infographicService.saveInfographics_GI();
