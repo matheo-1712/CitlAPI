@@ -715,17 +715,6 @@
         "formatedValue": "lyney"
     },
     {
-        "id": 66,
-        "name": "Ningguang",
-        "element": "Geo",
-        "weapon": "Catalyst",
-        "region": "Liyue",
-        "rarity": 4,
-        "icon": "https://furina.antredesloutres.fr/portrait/Ningguang.png",
-        "ascensionStat": "",
-        "formatedValue": "ningguang"
-    },
-    {
         "id": 67,
         "name" : "Neuvillette",
         "element": "Hydro",
