@@ -746,5 +746,27 @@
         "icon": "https://furina.antredesloutres.fr/portrait/Navia.png",
         "ascensionStat": "",
         "formatedValue": "navia"
+    },
+    {
+        "id": 69,
+        "name": "Skirk",
+        "element": "Cryo",
+        "weapon": "Sword",
+        "region": "Fontaine",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Skirk.png",
+        "ascensionStat": "",
+        "formatedValue": "skirk"
+    },
+    {
+        "id": 70,
+        "name": "Dahlia",
+        "element": "Hydro",
+        "weapon": "Sword",
+        "region": "Mondstadt",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Dahlia.png",
+        "ascensionStat": "",
+        "formatedValue": "dahlia"
     }
 ]
