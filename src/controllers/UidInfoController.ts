@@ -24,7 +24,7 @@ export class UidInfoController extends Controller {
     // GET /uid-infos : Obtenir toutes les infos UID
     async getAll(req: Request, res: Response): Promise<void> {
         try {
-            const uidInfos = this.model.getAll();
+            const uidInfos = await this.model.getAll();
             this.sendSuccess(res, uidInfos);
         } catch (error) {
             this.sendError(res, error instanceof Error ? error.message : String(error));
