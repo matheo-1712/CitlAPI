@@ -80,7 +80,7 @@ export class UidInfoModel extends Model implements UidInfosInterface {
 
     // Method to get all UidInfoModel instances from the database
     async getAll(): Promise<UidInfosInterface[]> {
-        return await this.repository.findAll();
+        return await this.repository.getAll();
     }
 
     // Method to get a UidInfoModel instance by UID from the database

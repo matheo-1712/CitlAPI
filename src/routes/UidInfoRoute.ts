@@ -24,6 +24,14 @@ export class UidInfoRoute extends Routes{
             parameters: ":uid",
             comment: "Obtenir une info UID par son uid",
         },
+        {
+            id: 202,
+            alias: "uid-infos-refresh",
+            route: "/uid-infos/refresh",
+            method: "POST",
+            parameters: "uid_genshin",
+            comment: "Rafraîchir les infos UID",
+        },
     ]
 
     constructor() {
@@ -40,5 +48,6 @@ export class UidInfoRoute extends Routes{
         // Déclarer les routes
         this.router.get("/", this.controller.getAll.bind(this.controller));
         this.router.get("/:uid", this.controller.getByUid.bind(this.controller));
+        this.router.post("/refresh", this.controller.refresh.bind(this.controller));
     }
 }
