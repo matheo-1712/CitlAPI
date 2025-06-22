@@ -85,8 +85,7 @@ export class UidInfoModel extends Model implements UidInfosInterface {
 
     // Method to get a UidInfoModel instance by UID from the database
     async getByUid(uid: string): Promise<UidInfosInterface | null> {
-        const data = await this.repository.getByUid(uid);
-        return data ? new UidInfoModel(data) : null;
+        return await this.repository.getByUid(uid);
     }
 
     // Method to get a Id by UID from the database
