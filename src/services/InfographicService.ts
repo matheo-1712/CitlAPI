@@ -38,7 +38,7 @@ export class InfographicService extends Service {
     private async startBrowser(): Promise<void> {
         try {
             // Lancer le navigateur
-            InfographicService.browser = await puppeteer.launch({ headless: true });
+            InfographicService.browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
             InfographicService.page = await InfographicService.browser.newPage();
 
             // Vérifier si le navigateur est lancé
