@@ -79,9 +79,8 @@ export class UidInfoModel extends Model implements UidInfosInterface {
     }
 
     // Method to get all UidInfoModel instances from the database
-    async getAll(): Promise<UidInfoModel[]> {
-        const data = await this.repository.getAll();
-        return data.map((item) => new UidInfoModel(item));
+    async getAll(): Promise<UidInfosInterface[]> {
+        return await this.repository.findAll();
     }
 
     // Method to get a UidInfoModel instance by UID from the database
