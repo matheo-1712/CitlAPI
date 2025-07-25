@@ -20,7 +20,7 @@ export class InfographicService extends Service {
         "driver", "sunfire", "electro", "aggravate", "burgeon", "on-field-dps", "nilou-bloom", "off-field-support",
         "on-field-driver", "on-field-dps-build", "c6-dps", "reaction", "off-field", "aggravate", "hyperbloom",
         "on-field", "physical", "transformative", "reverse-melt", "off-field", "on-field", "quicken",
-        "burgeon", "freeze-and-mono-cryo-dps", "pyro", "shielder"];
+        "burgeon", "freeze-and-mono-cryo-dps", "pyro", "shielder", "general-support"];
 
     private static readonly listeBuilds_HSR: string[] = ["dps", "support", "healer", "tank", "sub-dps", "off-field-dps"]
 
@@ -79,8 +79,11 @@ export class InfographicService extends Service {
         }
 
         // Vérifier si l'URL est valide
-        const response = await fetch(url);
-        if (response.status === 404) {
+        try {
+            const response = await fetch(url);
+            if (response.status === 404) return null;
+        } catch (error) {
+            this.logError(`Erreur lors du fetch initial de ${url}`, error instanceof Error ? error.message : String(error));
             return null;
         }
 
@@ -91,8 +94,11 @@ export class InfographicService extends Service {
         const finalUrl = InfographicService.page.url();
 
         // Vérifier si l'URL finale est valide (ne renvoie pas une erreur 404)
-        const responseFinal = await fetch(finalUrl);
-        if (responseFinal.status === 404 || url === finalUrl) {
+        try {
+            const responseFinal = await fetch(url);
+            if (responseFinal.status === 404) return null;
+        } catch (error) {
+            this.logError(`Erreur lors du fetch initial de ${url}`, error instanceof Error ? error.message : String(error));
             return null;
         }
         return finalUrl;
