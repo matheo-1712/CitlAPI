@@ -133,9 +133,9 @@ export class InfographicService extends Service {
         try {
             const existingInfographic = await InfographicService.repositoryInfographic.exists(infographic);
             if (existingInfographic) {
-                InfographicService.repositoryInfographic.updateInfographic(existingInfographic);
+                await InfographicService.repositoryInfographic.updateInfographic(existingInfographic);
             } else {
-                InfographicService.repositoryInfographic.saveGI(infographic);
+                await InfographicService.repositoryInfographic.saveGI(infographic);
             }
         } catch (error) {
             console.error("Erreur lors de l'enregistrement de l'infographie:", error);
