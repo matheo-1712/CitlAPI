@@ -1112,8 +1112,6 @@
     },
     {
         "id": 103,
-
-
         "name": "Ineffa",
         "element": "Electro",
         "weapon": "Catalyst",
@@ -1122,5 +1120,38 @@
         "icon": "https://furina.antredesloutres.fr/portrait/Ineffa.png",
         "ascensionStat": "",
         "formatedValue": "ineffa"
-    }
+    },
+  {
+    "id": 104,
+    "name": "Lauma",
+    "element": "Dendro",
+    "weapon": "Catalyst",
+    "region": "Nod-Krai",
+    "rarity": 5,
+    "icon": "https://furina.antredesloutres.fr/portrait/Lauma.png",
+    "ascensionStat": "",
+    "formatedValue": "lauma"
+  },
+  {
+    "id": 105,
+    "name": "Flins",
+    "element": "Electro",
+    "weapon": "Polearm",
+    "region": "Nod-Krai",
+    "rarity": 5,
+    "icon": "https://furina.antredesloutres.fr/portrait/Flins.png",
+    "ascensionStat": "",
+    "formatedValue": "flins"
+  },
+  {
+    "id": 106,
+    "name": "Aino",
+    "element": "Hydro",
+    "weapon": "Claymore",
+    "region": "Nod-Krai",
+    "rarity": 4,
+    "icon": "https://furina.antredesloutres.fr/portrait/Aino.png",
+    "ascensionStat": "",
+    "formatedValue": "aino"
+  }
 ]
