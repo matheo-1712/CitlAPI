@@ -21,7 +21,7 @@ export class IdDiscordToUidRoute extends Routes {
         {
             id: 301,
             alias: "id-discord-to-uid-getByUid",
-            route: "/id-discord-to-uid",
+            route: "/id-discord-to-uid/:id_discord",
             method: "GET",
             parameters: ":id_discord",
             comment: "Obtenir une info UID par son id_discord",
@@ -37,7 +37,7 @@ export class IdDiscordToUidRoute extends Routes {
         {
             id: 303,
             alias: "id-discord-to-uid-getUidByUid",
-            route: "/id-discord-to-uid/genshin/uid",
+            route: "/id-discord-to-uid/genshin/uid/:uid_genshin",
             method: "GET",
             parameters: ":uid_genshin",
             comment: "Obtenir une info UID par son uid_genshin",

@@ -1109,5 +1109,18 @@
         "icon": "https://furina.antredesloutres.fr/portrait/Ifa.png",
         "ascensionStat": "",
         "formatedValue": "ifa"
+    },
+    {
+        "id": 103,
+
+
+        "name": "Ineffa",
+        "element": "Electro",
+        "weapon": "Catalyst",
+        "region": "Nod-Krai",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Ineffa.png",
+        "ascensionStat": "",
+        "formatedValue": "ineffa"
     }
 ]

@@ -27,7 +27,7 @@ export class GenshinRoute extends Routes {
         {
             id: 2,
             alias: "characters-getById",
-            route: "/characters",
+            route: "/characters/:id",
             method: "GET",
             parameters: ":id",
             comment: "Obtenir un personnage par son ID",
@@ -36,7 +36,7 @@ export class GenshinRoute extends Routes {
         {
             id: 3,
             alias: "characters-getByValue",
-            route: "/characters/value",
+            route: "/characters/value/:value",
             method: "GET",
             parameters: ":value",
             comment: "Obtenir un personnage par son formatedValue",
