@@ -18,5 +18,7 @@ export interface UidInfosInterface {
     affinityCount: number,
     theaterAct: number,
     theaterMode: string,
-    playerIcon: string,
+    playerIcon?: string,
+    stygianIndex: number
+    stygianSeconds: number
 }

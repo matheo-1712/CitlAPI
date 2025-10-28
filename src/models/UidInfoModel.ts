@@ -45,6 +45,8 @@ export class UidInfoModel extends Model implements UidInfosInterface {
     theaterAct: number;
     theaterMode: string;
     playerIcon: string;
+    stygianIndex: number;
+    stygianSeconds: number;
 
     private readonly repository = new UidInfoRepository();
 
@@ -64,6 +66,8 @@ export class UidInfoModel extends Model implements UidInfosInterface {
         this.theaterAct = data.theaterAct ?? 0;
         this.theaterMode = data.theaterMode ?? "";
         this.playerIcon = data.playerIcon ?? "";
+        this.stygianIndex = data.stygianIndex ?? 0;
+        this.stygianSeconds = data.stygianSeconds ?? 0;
     }
 
     // Method to convert the model to a JSON object
@@ -75,6 +79,14 @@ export class UidInfoModel extends Model implements UidInfosInterface {
             level: this.level,
             worldLevel: this.worldLevel,
             signature: this.signature,
+            finishAchievementNum: this.finishAchievementNum,
+            towerFloor: this.towerFloor,
+            affinityCount: this.affinityCount,
+            theaterAct: this.theaterAct,
+            theaterMode: this.theaterMode,
+            playerIcon: this.playerIcon,
+            stygianIndex: this.stygianIndex,
+            stygianSeconds: this.stygianSeconds,
         }
     }
 

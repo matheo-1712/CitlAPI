@@ -1,7 +1,7 @@
 // src/services/UidInfosService.ts
 
 import {Service} from "./Service";
-import {Wrapper} from 'enkanetwork.js';
+import { EnkaClient } from "enka-network-api"
 import {UidInfosInterface} from "../interfaces/UidInfosInterface";
 import {UidInfoModel} from "../models/UidInfoModel";
 
@@ -10,7 +10,7 @@ import {UidInfoModel} from "../models/UidInfoModel";
  * It is used to handle operations related to UID information.
  */
 
-export  class UidInfosService extends Service{
+export  class UidInfosService extends Service {
     constructor(
         private readonly model: UidInfoModel = new UidInfoModel({}),
     ) {
@@ -33,15 +33,14 @@ export  class UidInfosService extends Service{
     // Method to get Enka data
     async getEnkaData(uid: string | null): Promise<any> {
         try {
-            // Récupérer les informations du joueur pour Genshin 
-            const { genshin } = new Wrapper();
+            const enka = new EnkaClient()
 
             // Vérifier si l'UID est null
             if (uid === null) {
                 return null;
             }
 
-            return await genshin.getPlayer(uid);
+            return await enka.fetchUser(uid);
 
         } catch (error) {
             this.logError('Error getting Enka data:', String(error));
@@ -49,31 +48,44 @@ export  class UidInfosService extends Service{
         }
     }
 
-    // Method to register UID infos
-    async registerUidInfosEnka(data: any): Promise<boolean> {
+// Méthode pour enregistrer les infos UID à partir d'un objet DetailedGenshinUser
+    async registerUidInfosEnka(detailedUser: any): Promise<boolean> {
         try {
-            // Verify data existence
-            if (!data || !data.player) {
+            if (!detailedUser || !detailedUser._data) {
+                this.logError("Aucune donnée Enka valide reçue.");
                 return false;
             }
 
-            const towerFloor = data.player.abyss.floor + "-" + data.player.abyss.chamber + "-" + data.player.abyss.stars + '⭐';
+            const data = detailedUser._data;
+            const info = data.playerInfo;
 
-            // Ajouter les informations de l'utilisateur
-            const uid_infos: UidInfosInterface = {
-                uid: data.uid,
-                nickname: data.player.username,
-                level: Number(data.player.levels.rank),
-                signature: data.player.signature,
-                finishAchievementNum: data.player.achievements,
-                towerFloor: towerFloor,
-                affinityCount: data.player.maxFriendshipCount,
-                theaterAct: Number(data.player.theaterAct),
-                theaterMode: data.player.theaterMode,
-                worldLevel: Number(data.player.levels.world),
-                playerIcon: data.player.profilePicture.assets.icon
+            if (!info) {
+                this.logError("Les informations du joueur sont manquantes.");
+                return false;
             }
 
+            // TODO : Refaire une gestion de profil d'utilisateur
+
+            // Construction du champ towerFloor (ex: "12-3-9⭐")
+            const towerFloor = `${info.towerFloorIndex ?? 0}-${info.towerLevelIndex ?? 0}-${info.towerStarIndex ?? 0}⭐`;
+
+            // Construction de l’objet final
+            const uid_infos: UidInfosInterface = {
+                uid: data.uid,
+                nickname: info.nickname ?? "Inconnu",
+                level: info.level ?? 0,
+                signature: info.signature ?? "",
+                finishAchievementNum: info.finishAchievementNum ?? 0,
+                towerFloor,
+                affinityCount: info.fetterCount ?? 0,
+                theaterAct: info.theaterActIndex ?? 0,
+                theaterMode: String(info.theaterModeIndex ?? ""),
+                worldLevel: info.worldLevel ?? 0,
+                stygianIndex: info.stygianIndex ?? 0,
+                stygianSeconds: info.stygianSeconds ?? 0,
+            };
+
+            // Enregistrement / mise à jour dans la base de données
             try {
                 if (await this.model.exists(uid_infos.uid)) {
                     const id = await this.model.getIdByUid(uid_infos.uid);
@@ -90,9 +102,11 @@ export  class UidInfosService extends Service{
                 this.logError("Erreur lors de la gestion des informations de l'UID:", String(error));
                 return false;
             }
+
         } catch (error) {
             this.logError("Erreur lors de la mise à jour des informations pour l'utilisateur:", String(error));
             return false;
         }
     }
 }
+

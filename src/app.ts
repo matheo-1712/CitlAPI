@@ -10,6 +10,7 @@ import { InfographicRoute } from "./routes/InfographicRoute"
 import {ApiRoute} from "./routes/ApiRoute";
 import {UidInfoRoute} from "./routes/UidInfoRoute";
 import {IdDiscordToUidRoute} from "./routes/IdDiscordToUidRoute";
+import {EnkaClient} from "enka-network-api";
 
 dotevnv.config()
 
@@ -73,6 +74,10 @@ async function start() {
 
     // Lancement de l'application
     app.start()
+
+    // Génération et mise en cache des assets Enka Network
+    const enka = new EnkaClient({showFetchCacheLog: false}); // showFetchCacheLog is true by default
+    await enka.cachedAssetsManager.fetchAllContents(); // returns promise
 
     // Génération des tokens initiales
     await app.modelToken.generateInitialTokens();
