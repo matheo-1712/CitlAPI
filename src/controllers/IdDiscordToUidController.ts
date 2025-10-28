@@ -41,9 +41,9 @@ export class IdDiscordToUidController extends Controller {
 
     // GET /id-discord-to-uid/genshin/uid/:uid : Obtenir une info UID par son uid
     async getUidByUid(req: Request, res: Response): Promise<void> {
-        const { uid } = req.params;
+        const { uid_genshin } = req.params;
         try {
-            const idDiscordToUid = await this.model.getUidByUid(uid);
+            const idDiscordToUid = await this.model.getUidByUid(uid_genshin);
             return super.sendSuccess(res, idDiscordToUid);
         } catch (error) {
             return super.sendError(res, error instanceof Error ? error.message : String(error));

@@ -20,8 +20,8 @@ export class IdDiscordToUidRoute extends Routes {
         },
         {
             id: 301,
-            alias: "id-discord-to-uid-getByUid",
-            route: "/id-discord-to-uid/:id_discord",
+            alias: "id-discord-to-uid-getUidByIdDiscord",
+            route: "/id-discord-to-uid/genshin/id_discord/:id_discord",
             method: "GET",
             parameters: ":id_discord",
             comment: "Obtenir une info UID par son id_discord",
@@ -36,7 +36,7 @@ export class IdDiscordToUidRoute extends Routes {
         },
         {
             id: 303,
-            alias: "id-discord-to-uid-getUidByUid",
+            alias: "id-discord-to-uid-getIdDiscordByUid",
             route: "/id-discord-to-uid/genshin/uid/:uid_genshin",
             method: "GET",
             parameters: ":uid_genshin",
@@ -56,7 +56,7 @@ export class IdDiscordToUidRoute extends Routes {
         Routes.registerRoutes(this.uidInfoRoutesList);
         // Déclarer les routes
         this.router.get("/", this.controller.getAll.bind(this.controller));
-        this.router.get("/:id_discord", this.controller.getUidByIdDiscord.bind(this.controller));
+        this.router.get("/genshin/id_discord/:id_discord", this.controller.getUidByIdDiscord.bind(this.controller));
         this.router.get("/genshin/uid/:uid_genshin", this.controller.getUidByUid.bind(this.controller));
         this.router.post("/",
             this.middlewareAuth.handle.bind(this.middlewareAuth),
