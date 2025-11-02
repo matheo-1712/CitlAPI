@@ -1153,5 +1153,16 @@
     "icon": "https://furina.antredesloutres.fr/portrait/Aino.png",
     "ascensionStat": "",
     "formatedValue": "aino"
+  },
+  {
+    "id": 107,
+    "name": "Nefer",
+    "element": "Dendro",
+    "weapon": "Catalyst",
+    "region": "Nod-Krai",
+    "rarity": 5,
+    "icon": "https://furina.antredesloutres.fr/portrait/Nefer.png",
+    "ascensionStat": "",
+    "formatedValue": "nefer"
   }
 ]
