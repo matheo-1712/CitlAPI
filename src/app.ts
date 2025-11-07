@@ -5,7 +5,6 @@ import helmet from "helmet"
 import { GenshinCharacterModel } from "./models/GenshinCharacterModel"
 import { GenshinRoute } from "./routes/GenshinRoute"
 import { TokenModel } from "./models/TokenModel"
-import { InfographicService } from "./services/InfographicService"
 import { InfographicRoute } from "./routes/InfographicRoute"
 import {ApiRoute} from "./routes/ApiRoute";
 import {UidInfoRoute} from "./routes/UidInfoRoute";
@@ -23,8 +22,6 @@ dotevnv.config()
  * @implements {GenshinRoute}
  */
 
-
-
 class App {
     public app: Application
     private readonly port: number
@@ -33,7 +30,6 @@ class App {
     constructor(
         public readonly modelToken = new TokenModel({}),
         public readonly modelGenshinCharacter = new GenshinCharacterModel({}),
-        public readonly infographicService = new InfographicService()
     ) {
 
         this.app = express();
@@ -84,9 +80,6 @@ async function start() {
 
     // Remplissage de la table des genshin characters
     await app.modelGenshinCharacter.fillTable();
-
-    // Enregistrement des infographies
-    await app.infographicService.saveInfographics_GI();
 }
 
 start().catch((error) => {
