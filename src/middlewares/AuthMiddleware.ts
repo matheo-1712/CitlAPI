@@ -12,11 +12,16 @@ export class MiddlewareAuth extends Middleware {
     handle(req: Request, res: Response, next: NextFunction): void {
         (async () => {
             try {
-                // Vérification de l'authentification
-                const token = req.headers["authorization"];
-                if (!token) {
+                // Récupère le header Authorization
+                const authHeader = req.headers["authorization"];
+                if (!authHeader) {
                     return res.status(401).json({ message: "Unauthorized" });
                 }
+
+                // Supprime le préfixe "Bearer "
+                const token = authHeader.startsWith("Bearer ")
+                    ? authHeader.slice(7)
+                    : authHeader;
 
                 // Vérification du token de l'utilisateur
                 if (!await ServiceToken.verifyToken(token)) {
@@ -26,12 +31,8 @@ export class MiddlewareAuth extends Middleware {
                 // Récupération des informations du token
                 const tokenData = await ServiceToken.getUtilisateurByToken(token);
 
-                // Affichage d'une log d'authentification réussie
-                console.log("Authentification réussie pour :", tokenData);
-
-                // Si tout est bon, on continue
+                console.log("✅ Authentification réussie pour :", tokenData);
                 next();
-
             } catch (error) {
                 console.error("Erreur lors de la vérification du token :", error);
                 res.status(500).json({ message: "Internal Server Error" });
