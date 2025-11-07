@@ -79,4 +79,14 @@ export class InfographicController extends Controller {
             super.sendError(res, error instanceof Error ? error.message : String(error));
         }
     }
+
+    // POST /infographics/genshin/new/:
+    async saveGiByPlayerValue(req: Request, res: Response): Promise<void> {
+        try {
+            const infographics = await this.model.saveGiByPlayerValue(req.body);
+            super.sendSuccess(res, infographics);
+        } catch (error) {
+            super.sendError(res, error instanceof Error ? error.message : String(error));
+        }
+    }
 }

@@ -38,7 +38,7 @@ export class GenshinCharacterRepository extends Repository<GenshinCharacterModel
     }
 
     // Méthode pour récupérer un personnage par sa formatedValue
-    async getByFormatedValue(formatedValue: string): Promise<GenshinCharacterModel | null> {
+    async getByFormatedValue(formatedValue: string | undefined): Promise<GenshinCharacterModel | null> {
         const results = await super.query(`SELECT * FROM genshin_characters WHERE formatedValue = ?`, [formatedValue]);
         return results.length > 0 ? results[0] : null;
     }

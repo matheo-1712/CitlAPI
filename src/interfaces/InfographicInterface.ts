@@ -15,4 +15,5 @@ export interface InfographicInterface {
     build: string;
     source: string;
     jeu: string;
+    formatedValue?: string;
 }

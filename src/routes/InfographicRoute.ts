@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { InfographicController } from "../controllers/InfographicController";
 import {Routes} from "./Route";
+import {MiddlewareAuth} from "../middlewares/AuthMiddleware";
 
 /**
  * InfographicRoute class
@@ -12,6 +13,7 @@ import {Routes} from "./Route";
 export class InfographicRoute extends Routes {
     public readonly router = Router();
     private readonly controller = new InfographicController();
+    private readonly middlewareAuth = new MiddlewareAuth();
 
     private readonly genshinRoutesList: Routes[] = [
         {
@@ -46,6 +48,14 @@ export class InfographicRoute extends Routes {
             parameters: ":jeu",
             comment: "Obtenir les infographies par le jeu",
         },
+        {
+            id: 104,
+            alias: "infographics-saveGiByPlayerValue",
+            route: "/infographics/genshin/new",
+            method: "POST",
+            parameters: "id_genshin_character, url, build, source, jeu",
+            comment: "Enregistrer une nouvelle infographie",
+        },
 
     ]
 
@@ -70,5 +80,8 @@ export class InfographicRoute extends Routes {
 
         // GET /api/infographics/jeu/:jeu : Obtenir les infographies par le jeu
         this.router.get("/jeu/:jeu", this.controller.getByJeu.bind(this.controller));
+
+        // POST /api/infographics/genshin/new/ : Enregistrer une nouvelle infographie
+        this.router.post("/genshin/new",this.middlewareAuth.handle.bind(this.middlewareAuth) , this.controller.saveGiByPlayerValue.bind(this.controller));
     }
 }

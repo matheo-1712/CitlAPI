@@ -113,4 +113,8 @@ export class InfographicModel extends Model implements InfographicInterface, Mod
     async delete(id: number): Promise<boolean> {
         return await this.repository.delete(id);
     }
+
+    async saveGiByPlayerValue(data: InfographicModel): Promise<void> {
+        return await this.repository.saveGiByPlayerValue(data)
+    }
 }
