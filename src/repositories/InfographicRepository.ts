@@ -71,7 +71,7 @@ export class InfographicRepository extends Repository<InfographicInterface> {
     // Méthode pour enregistrer une infographie (Genshin Impact)
     async saveGiByPlayerValue(data: InfographicInterface): Promise<void> {
         const repositoryGiCharacter = new GenshinCharacterRepository();
-        const repositoryInfographic = new InfographicRepository(); // si ton super.save() vient d’ici
+        const repositoryInfographic = new InfographicRepository();
 
         const character = await repositoryGiCharacter.getByFormatedValue(data.formatedValue);
         if (!character) {
@@ -87,38 +87,39 @@ export class InfographicRepository extends Repository<InfographicInterface> {
             source: data.source,
         };
 
-        // Vérifie si une infographie existe déjà pour ce personnage + build
-        const existing = await repositoryInfographic.exists(infographicData);
+        // ✅ Recherche de l'infographie existante
+        const existing = await repositoryInfographic.findOne({
+            where: {
+                id_genshin_character: character.id,
+                build: data.build,
+            },
+        });
 
-
-        if (existing?.id) {
-            // 🔁 Met à jour l'infographie existante
+        if (existing && existing.id !== undefined) {
+            // Mise à jour
             await repositoryInfographic.update(existing.id, infographicData);
             console.log(`🔁 Infographie mise à jour pour ${character.name} (${data.build})`);
         } else {
-            // 🆕 Crée une nouvelle infographie
+            // Création
             await repositoryInfographic.save(infographicData);
             console.log(`🆕 Nouvelle infographie enregistrée pour ${character.name} (${data.build})`);
         }
     }
 
+    private async findOne(param: { where: { id_genshin_character: number; build: string } }) {
+        const { id_genshin_character, build } = param.where;
 
-    // Méthode pour obtenir l'infographie par son ID de personnage (Honkai Star Rail)
-    async getByIdHSR(id: number): Promise<InfographicInterface[] | null> {
-        const results = await super.query(`SELECT * FROM infographics WHERE id_genshin_character = ? AND jeu = "HSR`, [id]);
-        return results.length > 0 ? results : null;
+        // Exemple avec un query builder ou pool MySQL
+        const result = await super.query(
+            `SELECT * FROM infographics WHERE id_genshin_character = ? AND build = ? LIMIT 1`,
+            [id_genshin_character, build]
+        );
+
+        if (result.length > 0) {
+            return result[0]; // retourne l'objet existant
+        }
+
+        return null; // rien trouvé
     }
 
-    // Méthode pour enregistrer une infographie (Honkai Star Rail)
-    async saveHSR(data: InfographicInterface): Promise<void> {
-        // Préparation de l'objet pour la base de données
-        const infographicData = {
-            id_hsr_character: data.id_hsr_character,
-            jeu: "HSR",
-            url: data.url,
-            build: data.build,
-            source: data.source,
-        };
-        await super.save(infographicData);
-    }
 }
