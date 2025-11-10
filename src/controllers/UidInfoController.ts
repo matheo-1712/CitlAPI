@@ -54,4 +54,15 @@ export class UidInfoController extends Controller {
             this.sendError(res, error instanceof Error ? error.message : String(error));
         }
     }
+
+    // PUT /uid-infos/playericon/
+    async updatePlayerIcon(req: Request, res: Response): Promise<void> {
+        try {
+            if (!req.body.uid_genshin && !req.body.player_icon) console.log(
+                "UID ou Player Icon manquant dans le corps de la requête."
+            )
+            const uidInfos = await this.model.updatePlayerIcon(req.body.uid_genshin, req.body.player_icon)
+            this.sendSuccess(res, uidInfos);
+        } catch (error) {}
+    }
 }

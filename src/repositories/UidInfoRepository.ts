@@ -39,4 +39,9 @@ export class UidInfoRepository extends Repository<UidInfosInterface>{
         const results = await this.query("SELECT id FROM uid_infos WHERE uid = ? LIMIT 1", [uid]);
         return results.length > 0 ? results[0] : null;
     }
+
+    // Méthode pour update l'icon de profil par son UUID
+    async updatePlayerIcon(uid: string, playerIcon: string): Promise<void> {
+        await this.query("UPDATE uid_infos SET playerIcon = ? WHERE uid = ?", [playerIcon, uid]);
+    }
 }

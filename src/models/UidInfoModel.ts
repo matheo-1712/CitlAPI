@@ -120,4 +120,9 @@ export class UidInfoModel extends Model implements UidInfosInterface {
     async update(id: number, uidInfo: UidInfosInterface): Promise<void> {
         await this.repository.update(id, uidInfo);
     }
+
+    // Method to update playerIcon by UID
+    async updatePlayerIcon(uid: string, playerIcon: string): Promise<void> {
+        await this.repository.updatePlayerIcon(uid, playerIcon);
+    }
 }
