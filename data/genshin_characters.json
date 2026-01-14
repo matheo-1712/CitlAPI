@@ -1164,5 +1164,38 @@
     "icon": "https://furina.antredesloutres.fr/portrait/Nefer.png",
     "ascensionStat": "",
     "formatedValue": "nefer"
-  }
+  },
+    {
+        "id": 107,
+        "name": "Durin",
+        "element": "Pyro",
+        "weapon": "Sword",
+        "region": "Mondstadt",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Nefer.png",
+        "ascensionStat": "",
+        "formatedValue": "durin"
+    },
+    {
+        "id": 108,
+        "name": "Jahoda",
+        "element": "Anemo",
+        "weapon": "Bow",
+        "region": "Nod-Krai",
+        "rarity": 4,
+        "icon": "https://furina.antredesloutres.fr/portrait/Jahoda.png",
+        "ascensionStat": "",
+        "formatedValue": "jahoda"
+    },
+    {
+        "id": 109,
+        "name": "Columbina",
+        "element": "Hydro",
+        "weapon": "Catalyst",
+        "region": "Nod-Krai",
+        "rarity": 5,
+        "icon": "https://furina.antredesloutres.fr/portrait/Columbina.png",
+        "ascensionStat": "",
+        "formatedValue": "columbina"
+    }
 ]
